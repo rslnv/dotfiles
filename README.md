@@ -11,3 +11,7 @@
 - checkout content
 
 `dotfiles checkout`
+
+- hide untracked files
+
+`dotfiles config --local status.showUntrackedFiles no`
