@@ -212,4 +212,8 @@ bar {
   swaybar_command waybar
 }
 
-include /etc/sway/config.d/*
+# Apps
+# title, class, app_id
+# run for window details
+# swaymsg -t get_tree
+for_window [title=" — Krusader$"] floating enabled
