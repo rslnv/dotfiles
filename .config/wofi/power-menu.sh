@@ -5,7 +5,7 @@ reboot_command="systemctl reboot"
 logout_command="swaymsg exit"
 sleep_command="systemctl suspend"
 
-rofi_command='wofi --dmenu --prompt Exit --width 10 --hide-scroll --insensitive'
+rofi_command='wofi --dmenu --prompt Exit --width 10 --lines 5 --hide-scroll --insensitive'
 
 options=$'Power Off\nReboot\nLogout\nSleep'
 
