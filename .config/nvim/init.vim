@@ -31,6 +31,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-commentary'
 
+Plug 'preservim/nerdtree'
+
 call plug#end()
 
 if exists('+termguicolors')
@@ -47,3 +49,5 @@ lua require'nvim_lsp'.omnisharp.setup{ on_attach=require'completion'.on_attach }
 
 let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.9 } }
 let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
+
+map <C-n> :NERDTreeToggle<CR>
