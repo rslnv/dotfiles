@@ -1,0 +1,45 @@
+/* https://github.com/davatorium/rofi-themes/ used as source */
+/* Concatenate color scheme and common stylesheets to get wofi theme */
+/* cat gruvbox-/theme/.css gruvbox-common.css > style.css */
+
+/* Gruvbox light colors */
+@define-color gruvbox-light-bg0          #fbf1c7;
+@define-color gruvbox-light-bg0-soft     #f2e5bc;
+@define-color gruvbox-light-bg2          #d5c4a1;
+@define-color gruvbox-light-fg0          #282828;
+@define-color gruvbox-light-fg1          #3c3836;
+@define-color gruvbox-light-gray         #7c6f64;
+@define-color gruvbox-light-red-dark     #9d0006;
+@define-color gruvbox-light-red-light    #cc241d;
+@define-color gruvbox-light-yellow-dark  #b57614;
+@define-color gruvbox-light-yellow-light #d79921;
+
+/* Theme colors */
+@define-color background                  @gruvbox-light-bg0;
+@define-color background-color            @background;
+@define-color foreground                  @gruvbox-light-fg1;
+@define-color border-color                @gruvbox-light-gray;
+@define-color separatorcolor              @border-color;
+@define-color scrollbar-handle            @border-color;
+
+@define-color normal-background           @background;
+@define-color normal-foreground           @foreground;
+@define-color alternate-normal-background @gruvbox-light-bg0-soft;
+@define-color alternate-normal-foreground @foreground;
+@define-color selected-normal-background  @gruvbox-light-bg2;
+@define-color selected-normal-foreground  @gruvbox-light-fg0;
+
+@define-color active-background           @gruvbox-light-yellow-dark;
+@define-color active-foreground           @background;
+@define-color alternate-active-background @active-background;
+@define-color alternate-active-foreground @active-foreground;
+@define-color selected-active-background  @gruvbox-light-yellow-light;
+@define-color selected-active-foreground  @active-foreground;
+
+@define-color urgent-background           @gruvbox-light-red-dark;
+@define-color urgent-foreground           @background;
+@define-color alternate-urgent-background @urgent-background;
+@define-color alternate-urgent-foreground @urgent-foreground;
+@define-color selected-urgent-background  @gruvbox-light-red-light;
+@define-color selected-urgent-foreground  @urgent-foreground;
+
