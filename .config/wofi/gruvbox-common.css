@@ -30,8 +30,13 @@
   background-color: @alternate-normal-background;
 }
 
-#entry:selected {
+#entry:selected, #entry:selected *{
   color: @selected-normal-foreground;
+  font-weight: bold;
   background-color: @selected-normal-background;
+}
+
+#img {
+  padding-right: 5px;
 }
 
