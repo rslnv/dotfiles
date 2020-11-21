@@ -16,7 +16,6 @@ include ./theme-breeze
 set $term alacritty
 # /etc/environment add MOZ_ENABLE_WAYLAND=1 for wayland support
 set $browser firefox 
-set $menu wofi --show drun --allow-images
 
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -50,7 +49,8 @@ bindsym $mod+Shift+Return exec $browser
 # Kill focused window
 bindsym $mod+w kill
 # Start your launcher
-bindsym $mod+space exec $menu
+bindsym $mod+space exec wofi --show drun --allow-images
+bindsym $mod+Shift+space exec wofi --show run
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.

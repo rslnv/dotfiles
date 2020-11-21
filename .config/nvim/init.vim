@@ -33,6 +33,8 @@ Plug 'tpope/vim-commentary'
 
 Plug 'preservim/nerdtree'
 
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
 call plug#end()
 
 if exists('+termguicolors')
@@ -51,3 +53,6 @@ let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.9 } }
 let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
 
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+let g:Hexokinase_highlighters = [ 'virtual' ]
