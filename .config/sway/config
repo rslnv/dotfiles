@@ -180,7 +180,8 @@ bar {
 # title, class, app_id
 # run for window details
 # swaymsg -t get_tree
-for_window [title=" — Krusader$"] floating enabled
+# for_window [title=" — Krusader$"] floating enabled
+for_window [app_id="gnome-calculator"] floating enabled
 
 # setting theme
 seat seat0 xcursor_theme Adwaita
