@@ -26,3 +26,6 @@ alias free='free -m'                      # show sizes in MB
 
 # alias for bare git repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME'
+
+# rclone
+alias rcmd='rclone mount Dropbox: ~/Dropbox'
