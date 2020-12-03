@@ -52,6 +52,11 @@ bindsym $mod+w kill
 bindsym $mod+space exec wofi --show drun --allow-images
 bindsym $mod+Shift+space exec wofi --show run
 
+# Take a screenshot with all output and save it into screenshots
+bindsym Print exec grim -t jpeg ~/Screenshots/$(date +%Y%m%d-%H%M%S).jpg
+# Take a Screenshot with the region select
+bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Screenshots/$(date +%Y%m%d-%H%M%S).jpg
+
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
