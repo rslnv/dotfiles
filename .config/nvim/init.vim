@@ -53,14 +53,13 @@ colorscheme gruvbox
 let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 
-lua require'lspconfig'.omnisharp.setup{}
-" lua <<EOF
-"   " require'lspconfig'.omnisharp.setup{on_attach=require'completion'.on_attach}
-"   " require'lspconfig'.angularls.setup{on_attach=require'completion'.on_attach}
-" EOF
-
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_matching_smart_case = 1
+
+lua <<EOF
+  require'lspconfig'.omnisharp.setup{on_attach=require'completion'.on_attach}
+  require'lspconfig'.angularls.setup{on_attach=require'completion'.on_attach}
+EOF
 
 let g:fzf_layout = { 'window': {'width': 0.9, 'height': 0.9 } }
 let g:fzf_preview_window = ['right:70%:hidden', 'ctrl-/']
