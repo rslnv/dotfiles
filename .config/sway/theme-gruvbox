@@ -1,0 +1,25 @@
+# Window borders
+default_border pixel 1
+default_floating_border pixel 1
+
+smart_borders on
+smart_gaps on
+
+gaps inner 3
+
+
+set $bg             #d65d0e
+set $bg-inactive    #323232
+set $bg-urgent      #000000
+set $text           #eeeeec
+set $text-inactive  #babdb6
+
+set $bar           #323232
+set $statusline    #e0e0e0
+
+# class                 border        background    text            indicator  child_border
+client.focused          $bg           $bg           $text           $bg        $bg
+client.unfocused        $bg-inactive  $bg-inactive  $text-inactive  $bar       $bar
+client.focused_inactive $bg-inactive  $bg-inactive  $text-inactive  $bar       $bar
+client.urgent           $bg-urgent    $bg-urgent    $text           $bar       $bar
+

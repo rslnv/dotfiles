@@ -10,7 +10,7 @@ set $right l
 
 
 # Theme
-include ./theme-breeze
+include ./theme-gruvbox
 
 
 set $term alacritty
@@ -38,7 +38,6 @@ exec swayidle -w \
 # Read `man 5 sway-input` for more information about this section.
 input "type:keyboard" {
   xkb_layout us,gb
-#  xkb_variant alt-intl 
 }
 
 
@@ -180,6 +179,9 @@ bar {
 for_window [app_id="gnome-calculator"] floating enabled
 
 # setting theme
-seat seat0 xcursor_theme Adwaita
+seat seat0 xcursor_theme "Adwaita"
 # gtk-theme, icon-theme, cursor-them
-exec_always gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+  gsettings set $gnome-schema cursor-theme 'Adwaita'
+}
