@@ -31,7 +31,7 @@ window#waybar {
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-  padding: 0 5px;
+  padding: 0 2px;
   background: #4a4a4a;
   color: white;
 }
@@ -41,7 +41,7 @@ window#waybar {
 }
 
 #custom-l1{
-	font-size: 20px;
+	font-size: 15px;
 	color: #4a4a4a;
 	background: transparent;
 }
@@ -52,7 +52,7 @@ window#waybar {
 }
 
 #custom-r1 {
-  font-size: 20px;
+  font-size: 15px;
   color: #4a4a4a;
   background: transparent;
 }
@@ -62,7 +62,7 @@ window#waybar {
 }
 
 #custom-r2 {
-  font-size: 20px;
+  font-size: 15px;
   color: #3a3a3a;
   background: #4a4a4a;
 }
@@ -72,7 +72,7 @@ window#waybar {
 }
 
 #custom-r3 {
-  font-size: 20px;
+  font-size: 15px;
   color: #4e4e4e;
   background: #3a3a3a;
 }
@@ -83,7 +83,7 @@ window#waybar {
 }
 
 #custom-r4 {
-  font-size: 20px;
+  font-size: 15px;
   color: #949494;
   background: #4e4e4e;
 }
