@@ -48,8 +48,10 @@ bindsym $mod+Shift+Return exec $browser
 # Kill focused window
 bindsym $mod+w kill
 # Start your launcher
-bindsym $mod+space exec wofi --show drun --allow-images
+bindsym $mod+space exec wofi --show drun -I
 bindsym $mod+Shift+space exec wofi --show run
+# fixes issue with gmone apps not launching through drun
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus 
 
 # Take a screenshot with all output and save it into screenshots
 bindsym Print exec grim -t jpeg ~/Screenshots/$(date +%Y%m%d-%H%M%S).jpg
@@ -68,6 +70,9 @@ bindsym $mod+Shift+r reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+q exec ~/.config/wofi/power-menu.sh
+
+# Lock screen
+bindsym $mod+x exec swaylock -f -c 000000
 
     
 # Move your focus around
