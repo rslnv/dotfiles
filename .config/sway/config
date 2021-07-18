@@ -1,5 +1,6 @@
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
+set $key-alt Mod1
+set $key-super Mod4
+set $mod $key-super
 
 
 # Home row direction keys, like vim
@@ -38,6 +39,7 @@ exec swayidle -w \
 # Read `man 5 sway-input` for more information about this section.
 input "type:keyboard" {
   xkb_layout us,gb
+  xkb_options grp:alt_space_toggle
 }
 
 
@@ -167,6 +169,9 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+# Send signal 1 to waybar when changing keyboard layout
+bindsym $key-alt+space exec "pkill --signal SIGRTMIN+1 waybar"
 
 #
 # Status Bar:
