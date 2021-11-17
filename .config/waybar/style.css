@@ -40,6 +40,10 @@ window#waybar {
   color: #ff8700;
 }
 
+#workspaces button.urgent{
+  color: #d05c5c;
+}
+
 #custom-l1{
 	font-size: 17px;
 	color: #4a4a4a;
