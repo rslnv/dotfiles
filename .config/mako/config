@@ -1,0 +1,5 @@
+# man 5 mako
+# https://github.com/emersion/mako/wiki/Example-configuration
+
+ignore-timeout=1
+default-timeout=5000

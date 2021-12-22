@@ -201,8 +201,10 @@ bar {
 # title, class, app_id
 # run for window details
 # swaymsg -t get_tree
-# for_window [title=" — Krusader$"] floating enabled
 for_window [app_id="gnome-calculator"] floating enabled
+
+for_window [class="."] inhibit_idle fullscreen
+for_window [app_id="."] inhibit_idle fullscreen
 
 # setting theme
 seat seat0 xcursor_theme "Adwaita"
@@ -214,3 +216,6 @@ exec_always {
 
 # screen casting (requires xdg-desktop-protal-wlr package)
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# notifications
+exec mako
