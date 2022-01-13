@@ -45,7 +45,7 @@ window#waybar {
 }
 
 #custom-l1{
-	font-size: 17px;
+  font-size: 17px;
 	color: #4a4a4a;
 	background: transparent;
 }
@@ -82,7 +82,7 @@ window#waybar {
 }
 
 #clock {
-  font-weight: bold;
+  /* font-weight: bold; */
   background: #4e4e4e;
 }
 
@@ -94,6 +94,19 @@ window#waybar {
 
 #tray {
   background-color: #949494;
+}
+
+#custom-r5 {
+  font-size: 17px;
+  color: #d65d0e;
+  background: #949494;
+}
+
+#custom-shutdown{
+	background-color: #d65d0e;
+	color: #504945;
+  padding-left: 5px;
+  padding-right: 10px;
 }
 
 #idle_inhibitor {

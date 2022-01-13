@@ -23,6 +23,8 @@
     "clock#date",
     "custom/r4",
     "tray",
+    "custom/r5",
+    "custom/shutdown"
   ],
 
 
@@ -32,7 +34,8 @@
     "format": "{name}"
   },
   "custom/l1": {
-    "format": ""
+    "format": "",
+    "tooltip": false
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
@@ -44,7 +47,8 @@
 
 
   "custom/r1": {
-    "format": ""
+    "format": "",
+    "tooltip": false
   },
   "network": {
     "interval": 5,
@@ -56,15 +60,18 @@
     "tooltip-format-disconnected": "No network"
   },
   "custom/r2": {
-    "format": ""
+    "format": "",
+    "tooltip": false
   },
   "clock#date": {
     "interval": 10,
     "format": "{:%e/%m/%y %H:%M}", // Icon: calendar-alt
-    "tooltip-format": "{:%A %e %B %Y}"
+    "tooltip-format": "{:%A %e %B %Y}",
+    "on-click": "gnome-calendar"
   },
   "custom/r3": {
-    "format": ""
+    "format": "",
+    "tooltip": false
   },
   "custom/keyboard-layout": {
     "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
@@ -76,11 +83,21 @@
     "tooltip": false
   },
   "custom/r4": {
-    "format": ""
+    "format": "",
+    "tooltip": false
   },
   "tray": {
     "icon-size": 16,
     "spacing": 10
+  },
+  "custom/r5": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/shutdown": {
+      "format": "",
+      "tooltip": false,
+      "on-click": "~/.config/wofi/power-menu.sh"
   },
 
   "custom/arrow3": {

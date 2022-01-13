@@ -29,3 +29,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME'
 
 # rclone
 alias rcmd='rclone mount Dropbox: ~/Dropbox'
+
+# vpn
+alias vpnru='cd ~/Downloads/vpn; sudo openvpn ru.protonvpn.com.udp.ovpn'
+alias vpnee='cd ~/Downloads/vpn; sudo openvpn ee.protonvpn.com.udp.ovpn'
