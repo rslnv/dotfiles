@@ -5,7 +5,7 @@ local keymap = vim.api.nvim_set_keymap
 vim.g.mapleader=" "
 
 -- File explorer
-keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)

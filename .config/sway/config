@@ -61,10 +61,12 @@ bindsym $mod+Shift+space exec wofi --show run
 # fixes issue with gmone apps not launching through drun
 exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus 
 
-# Take a screenshot with all output and save it into screenshots
-bindsym Print exec grim -t jpeg ~/Screenshots/$(date +%Y%m%d-%H%M%S).jpg
-# Take a Screenshot with the region select
-bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Screenshots/$(date +%Y%m%d-%H%M%S).jpg
+# Screenshot
+# add XDG_SCREENSHOTS_DIR="$HOME/Screenshots" to .config/user-dirs.dirs 
+# run 'grimshot check' for diagnostics
+bindsym Print exec /usr/share/sway/scripts/grimshot --notify save active
+bindsym $mod+Print exec /usr/share/sway/scripts/grimshot --notify save area
+bindsym $mod+Shift+Print exec /usr/share/sway/scripts/grimshot --notify save output
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.

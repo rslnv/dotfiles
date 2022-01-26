@@ -42,6 +42,8 @@ return require("packer").startup(function(use)
 
   use "numToStr/Comment.nvim"
 
+  use "akinsho/toggleterm.nvim"
+
   use "akinsho/bufferline.nvim"
   use "nvim-lualine/lualine.nvim"
 
