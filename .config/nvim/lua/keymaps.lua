@@ -24,7 +24,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprev<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>fca", ":Telescope lsp_code_actions<CR>", opts)
+keymap("n", "<leader>ca", ":Telescope lsp_code_actions<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)

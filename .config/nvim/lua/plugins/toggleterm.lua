@@ -4,9 +4,9 @@ if not status_ok then
 	return
 end
 
-toggleterm.setup({
+toggleterm.setup {
 	size = 20,
-	open_mapping = [[<C-\>]],
+	open_mapping = [[<c-\>]],
 	hide_numbers = true,
 	shade_filetypes = {},
 	shade_terminals = true,
@@ -25,4 +25,4 @@ toggleterm.setup({
 			background = "Normal",
 		},
 	},
-})
+}
