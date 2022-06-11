@@ -46,7 +46,9 @@ exec swayidle -w \
 input "type:keyboard" {
   xkb_layout us,gb,ru
   xkb_variant ,,phonetic
-  xkb_options grp:alt_space_toggle
+  # list available toggles
+  # localectl list-x11-keymap-options | grep grp:
+  xkb_options grp:shifts_toggle,caps:escape
 }
 
 bindsym $mod+Shift+Return exec $term
@@ -188,13 +190,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-# Send signal 1 to waybar when changing keyboard layout
-bindsym $key-alt+space exec "pkill --signal SIGRTMIN+1 waybar"
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
   swaybar_command waybar
 }
@@ -203,8 +198,8 @@ bar {
 # title, class, app_id
 # run for window details
 # swaymsg -t get_tree
-for_window [app_id="gnome-calculator"] floating enabled
-for_window [app_id="gnome-calendar"] floating enabled
+for_window [app_id="org.gnome.Calculator"] floating enabled
+for_window [app_id="org.gnome.Calendar"] floating enabled
 
 for_window [class="."] inhibit_idle fullscreen
 for_window [app_id="."] inhibit_idle fullscreen
@@ -217,8 +212,14 @@ exec_always {
   gsettings set $gnome-schema cursor-theme 'Adwaita'
 }
 
-# screen casting (requires xdg-desktop-protal-wlr package)
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# screen casting (requires xdg-desktop-portal-wlr package)
+#exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+#exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# https://github.com/Alexays/Waybar/issues/1093#issuecomment-841846291
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # notifications
 exec mako

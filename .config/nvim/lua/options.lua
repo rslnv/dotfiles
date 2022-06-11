@@ -40,3 +40,6 @@ o.shiftwidth = indent
 local scrolloff = 8
 o.scrolloff = scrolloff
 o.sidescrolloff = scrolloff
+
+-- global statusline
+o.laststatus = 3

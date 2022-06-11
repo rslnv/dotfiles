@@ -7,8 +7,10 @@
   "height": 16,
 
   "modules-left": [
-    "sway/workspaces",
+    "custom/launcher",
     "custom/l1",
+    "sway/workspaces",
+    "custom/l2",
     "sway/mode"
   ],
   "modules-center": [
@@ -18,7 +20,7 @@
     "custom/r1",
     "network",
     "custom/r2",
-    "custom/keyboard-layout",
+    "sway/language",
     "custom/r3",
     "clock#date",
     "custom/r4",
@@ -27,13 +29,21 @@
     "custom/shutdown"
   ],
 
-
+  "custom/launcher": {
+    "on-click": "wofi --show drun -I",
+    "format": "",
+    "tooltip": false
+  },
+  "custom/l1": {
+    "format": "",
+    "tooltip": false
+  },
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{name}"
   },
-  "custom/l1": {
+  "custom/l2": {
     "format": "",
     "tooltip": false
   },
@@ -73,14 +83,10 @@
     "format": "",
     "tooltip": false
   },
-  "custom/keyboard-layout": {
-    "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
-    // Interval set only as a fallback, as the value is updated by signal
-    "interval": 30,
-    "format": "  {}", // Icon: keyboard
-    // Signal sent by Sway key binding (~/.config/sway/config) for keyboard layout switching
-    "signal": 1, // SIGHUP
-    "tooltip": false
+  "sway/language": {
+    "format": "  {}",
+    "min-length": 5,
+    "tooltip": false,
   },
   "custom/r4": {
     "format": "",

@@ -15,6 +15,7 @@ window#waybar {
 
 #clock,
 #custom-keyboard-layout,
+#language,
 #mode,
 #network,
 #pulseaudio,
@@ -27,6 +28,20 @@ window#waybar {
     background-color: #ffffff;
     color: black;
   }
+}
+
+#custom-launcher{
+	background-color: #d65d0e;
+	color: #504945;
+  padding-left: 5px;
+  padding-right: 10px;
+  font-size: 17px;
+}
+
+#custom-l1{
+  font-size: 17px;
+	color: #d65d0e;
+	background: #4a4a4a;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -44,7 +59,7 @@ window#waybar {
   color: #d05c5c;
 }
 
-#custom-l1{
+#custom-l2{
   font-size: 17px;
 	color: #4a4a4a;
 	background: transparent;
@@ -71,7 +86,7 @@ window#waybar {
   background: #4a4a4a;
 }
 
-#custom-keyboard-layout {
+#custom-keyboard-layout, #language {
   background: #3a3a3a;
 }
 

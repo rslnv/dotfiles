@@ -3,31 +3,23 @@ local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
-  vim.cmd [[packadd packer.nvim]]
+  --vim.cmd [[packadd packer.nvim]]
 end
 
 vim.cmd [[
   augroup Packer
     autocmd!
-    autocmd BufWritePost install.lua source <afile> | PackerSync
+    autocmd BufWritePost install.lua source <afile> | PackerCompile
   augroup end
 ]]
 
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
+  print("packer is not available")
   return
 end
 
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float --{ border = "rounded" }
-    end,
-  },
-}
-
-return require("packer").startup(function(use)
+return require("packer").startup({function(use)
   use "wbthomason/packer.nvim"
 
   use "nvim-lua/popup.nvim"
@@ -38,7 +30,8 @@ return require("packer").startup(function(use)
 
   use "windwp/nvim-autopairs"
 
-  use "morhetz/gruvbox"
+  -- use "morhetz/gruvbox"
+  use "sainnhe/gruvbox-material"
 
   use "numToStr/Comment.nvim"
 
@@ -77,4 +70,13 @@ return require("packer").startup(function(use)
   if Packer_bootstrap then
     require("packer").sync()
   end
-end)
+end,
+
+config = {
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "single"})
+    end
+  }
+}
+})

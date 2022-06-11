@@ -78,7 +78,7 @@ local function lsp_keymaps(bufnr)
   buf_set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   buf_set_keymap("n", "<leader>lsh", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- buf_set_keymap("n", "<leader>lof", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   buf_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]

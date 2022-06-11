@@ -13,8 +13,5 @@ nvim_tree.setup {
       warning = "",
       error = "",
     },
-  },
-  show_icons = {
-    tree_width = 30
   }
 }
