@@ -48,7 +48,7 @@ input "type:keyboard" {
   xkb_variant ,,phonetic
   # list available toggles
   # localectl list-x11-keymap-options | grep grp:
-  xkb_options grp:shifts_toggle,caps:escape
+  xkb_options grp:shifts_toggle
 }
 
 bindsym $mod+Shift+Return exec $term
@@ -198,11 +198,17 @@ bar {
 # title, class, app_id
 # run for window details
 # swaymsg -t get_tree
-for_window [app_id="org.gnome.Calculator"] floating enabled
-for_window [app_id="org.gnome.Calendar"] floating enabled
+for_window {
+  [app_id="(?i)popup"] floating enable
+  [app_id="nm-connection-editor"] floating enable, resize set 600 400
+  [app_id="pavucontrol"] floating enable, resize set 600 400
 
-for_window [class="."] inhibit_idle fullscreen
-for_window [app_id="."] inhibit_idle fullscreen
+  [app_id="org.gnome.Calculator"] floating enabled
+  [app_id="org.gnome.Calendar"] floating enabled
+
+  [class="."] inhibit_idle fullscreen
+  [app_id="."] inhibit_idle fullscreen
+}
 
 # setting theme
 seat seat0 xcursor_theme "Adwaita"
@@ -212,14 +218,7 @@ exec_always {
   gsettings set $gnome-schema cursor-theme 'Adwaita'
 }
 
-# screen casting (requires xdg-desktop-portal-wlr package)
-#exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-#exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
-# https://github.com/Alexays/Waybar/issues/1093#issuecomment-841846291
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
 # notifications
 exec mako
+
+include /etc/sway/config.d/*

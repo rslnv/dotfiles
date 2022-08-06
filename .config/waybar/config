@@ -48,7 +48,7 @@
     "tooltip": false
   },
   "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
+    "format": " {}"
   },
   "sway/window": {
     "format": "{}",
@@ -67,7 +67,8 @@
     "format-ethernet": " ", // Icon: ethernet
     "tooltip-format-ethernet": "{ifname} -> {ipaddr}/{cid}",
     "format-disconnected": "⚠ ",
-    "tooltip-format-disconnected": "No network"
+    "tooltip-format-disconnected": "No network",
+    "on-click": "nm-connection-editor"
   },
   "custom/r2": {
     "format": "",
