@@ -3,7 +3,7 @@ local o = vim.opt
 -- install xsel under sway
 o.clipboard = "unnamedplus" -- access system clipboard
 
-o.completeopt = {"menu","menuone","noselect"}
+o.completeopt = { "menu", "menuone", "noselect" }
 o.mouse = "a"
 o.hidden = true
 o.smartcase = true
