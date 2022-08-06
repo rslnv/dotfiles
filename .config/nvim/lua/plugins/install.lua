@@ -1,8 +1,8 @@
 local fn = vim.fn
-local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  Packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
   --vim.cmd [[packadd packer.nvim]]
 end
 
@@ -19,7 +19,7 @@ if not status_ok then
   return
 end
 
-return require("packer").startup({function(use)
+return packer.startup({ function(use)
   use "wbthomason/packer.nvim"
 
   use "nvim-lua/popup.nvim"
@@ -56,6 +56,7 @@ return require("packer").startup({function(use)
   -- lsp
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
+  use "jose-elias-alvarez/null-ls.nvim"
 
   use "nvim-lua/completion-nvim"
   use "tjdevries/nlua.nvim"
@@ -72,11 +73,11 @@ return require("packer").startup({function(use)
   end
 end,
 
-config = {
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "single"})
-    end
+  config = {
+    display = {
+      open_fn = function()
+        return require("packer.util").float({ border = "single" })
+      end
+    }
   }
-}
 })
