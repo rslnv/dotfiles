@@ -14,7 +14,7 @@ o.expandtab = true
 o.smartindent = true
 o.swapfile = false
 o.backup = false
-o.undodir = vim.fn.stdpath("config") .. "/undodir"
+o.undodir = vim.env.HOME .. "/.config/undodir"
 o.undofile = true
 o.termguicolors = true
 
@@ -43,3 +43,5 @@ o.sidescrolloff = scrolloff
 
 -- global statusline
 o.laststatus = 3
+
+o.timeoutlen = 1000

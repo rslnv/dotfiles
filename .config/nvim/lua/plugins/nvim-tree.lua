@@ -5,13 +5,11 @@ if not status_ok then
 end
 
 nvim_tree.setup {
+  view = {
+    adaptive_size = true,
+  },
   diagnostics = {
     enable = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
+    show_on_dirs = true,
   }
 }
