@@ -71,7 +71,7 @@ local function lsp_keymaps(bufnr)
 	which_key.register({
 		l = {
 			name = "LSP",
-			f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format code", buffer = bufnr },
+			f = { "<cmd>lua vim.lsp.buf.format({async=true})<CR>", "Format code", buffer = bufnr },
 			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions", buffer = bufnr },
 			r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename", buffer = bufnr },
 			s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help", buffer = bufnr },
@@ -84,14 +84,18 @@ end
 
 M.on_attach = function(client, bufnr)
 	if client.name == "angularls" then
-		client.server_capabilities.document_formatting = false
+		client.resolved_capabilities.document_formatting = false
 	end
 
 	if client.name == "sumneko_lua" then
-		client.server_capabilities.document_formatting = false
+		client.resolved_capabilities.document_formatting = false
+		print("sumneko lua is running")
 	end
 
+	-- print(client.name .. " is running")
+
 	lsp_keymaps(bufnr)
+
 	-- local status_ok, illuminate = pcall(require, "illuminate")
 	-- if not status_ok then
 	--   return
