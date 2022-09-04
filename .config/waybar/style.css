@@ -4,7 +4,7 @@
   min-height: 0;
   margin: 0;
   padding: 0;
-  font-size: 13px;
+  font-size: 14px;
   font-family: FiraCode Nerd Font;
 }
 
@@ -13,14 +13,16 @@ window#waybar {
 	color: #949494;
 }
 
-#clock,
-#custom-keyboard-layout,
-#language,
+#workspaces button,
 #mode,
+#window,
+#clock,
+#language,
 #network,
-#pulseaudio,
-#tray {
-  padding: 0 10px;
+#custom-shutdown {
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 @keyframes blink {
@@ -35,18 +37,19 @@ window#waybar {
 	color: #504945;
   padding-left: 5px;
   padding-right: 10px;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 #custom-l1{
-  font-size: 17px;
+  font-size: 18px;
 	color: #d65d0e;
 	background: #4a4a4a;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-  padding: 0 2px;
+  padding-left: 2px;
+  padding-right: 2px;
   background: #4a4a4a;
   color: white;
 }
@@ -60,7 +63,7 @@ window#waybar {
 }
 
 #custom-l2{
-  font-size: 17px;
+  font-size: 18px;
 	color: #4a4a4a;
 	background: transparent;
 }
@@ -71,7 +74,7 @@ window#waybar {
 }
 
 #custom-r1 {
-  font-size: 17px;
+  font-size: 18px;
   color: #4a4a4a;
   background: transparent;
 }
@@ -81,7 +84,7 @@ window#waybar {
 }
 
 #custom-r2 {
-  font-size: 17px;
+  font-size: 18px;
   color: #3a3a3a;
   background: #4a4a4a;
 }
@@ -91,7 +94,7 @@ window#waybar {
 }
 
 #custom-r3 {
-  font-size: 17px;
+  font-size: 18px;
   color: #4e4e4e;
   background: #3a3a3a;
 }
@@ -102,17 +105,19 @@ window#waybar {
 }
 
 #custom-r4 {
-  font-size: 17px;
+  font-size: 18px;
   color: #949494;
   background: #4e4e4e;
 }
 
 #tray {
   background-color: #949494;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #custom-r5 {
-  font-size: 17px;
+  font-size: 18px;
   color: #d65d0e;
   background: #949494;
 }

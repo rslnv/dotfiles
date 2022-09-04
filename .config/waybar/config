@@ -4,7 +4,7 @@
   "output": "DP-1",
 
   // If height property would be not present, it'd be calculated dynamically
-  "height": 16,
+  /* "height": 30, */
 
   "modules-left": [
     "custom/launcher",
@@ -94,7 +94,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 18,
     "spacing": 10
   },
   "custom/r5": {
