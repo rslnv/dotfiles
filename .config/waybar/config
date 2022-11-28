@@ -4,7 +4,7 @@
   "output": "DP-1",
 
   // If height property would be not present, it'd be calculated dynamically
-  /* "height": 30, */
+  /* "height": 20, */
 
   "modules-left": [
     "custom/launcher",
@@ -62,11 +62,11 @@
   },
   "network": {
     "interval": 5,
-    "format-wifi": "  {signalStrength}%", // Icon: wifi
+    "format-wifi": " {signalStrength}%", // Icon: wifi
     "tooltip-format-wifi": "{essid}\n{ifname}\n{ipaddr}",
-    "format-ethernet": " ", // Icon: ethernet
+    "format-ethernet": "", // Icon: ethernet
     "tooltip-format-ethernet": "{ifname} -> {ipaddr}/{cid}",
-    "format-disconnected": "⚠ ",
+    "format-disconnected": "⚠",
     "tooltip-format-disconnected": "No network",
     "on-click": "nm-connection-editor"
   },
@@ -85,9 +85,10 @@
     "tooltip": false
   },
   "sway/language": {
-    "format": "  {}",
+    "format": " {}",
     "min-length": 5,
     "tooltip": false,
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
   },
   "custom/r4": {
     "format": "",
@@ -105,9 +106,5 @@
       "format": "",
       "tooltip": false,
       "on-click": "~/.config/wofi/power-menu.sh"
-  },
-
-  "custom/arrow3": {
-    "format": ""
   },
 }

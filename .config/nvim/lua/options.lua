@@ -14,7 +14,7 @@ o.expandtab = true
 o.smartindent = true
 o.swapfile = false
 o.backup = false
-o.undodir = vim.env.HOME .. "/.config/undodir"
+o.undodir = vim.fn.expand("~/.config/undodir")
 o.undofile = true
 o.termguicolors = true
 

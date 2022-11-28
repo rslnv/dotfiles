@@ -10,7 +10,7 @@ which_key.register({
 		name = "Buffers",
 		b = { "<cmd>bd<CR>", "Close current" },
 		a = { "<cmd>bufdo bd<CR>", "Close all" },
-		o = { ":%bd | e# | bd#<CR>", "Close other" },
+		o = { "<cmd>%bd | e# | bd#<CR>", "Close other" },
 		c = { "<cmd>BufferLinePickClose<CR>", "Close selected" },
 		s = { "<cmd>BufferLinePick<CR>", "Select" },
 		p = { "<cmd>BufferLineTogglePin<CR>", "Pin current" },

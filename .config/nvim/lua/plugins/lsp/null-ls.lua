@@ -1,5 +1,6 @@
 local status_ok, null_ls = pcall(require, "null-ls")
 if not status_ok then
+  print("null-ls is not available")
   return
 end
 
@@ -9,13 +10,13 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 -- https://github.com/prettier-solidity/prettier-plugin-solidity
-null_ls.setup {
+null_ls.setup({
   debug = false,
   sources = {
-    formatting.prettier.with {
+    formatting.prettier.with({
       extra_filetypes = { "toml" },
       extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-    },
+    }),
     formatting.stylua,
   },
-}
+})

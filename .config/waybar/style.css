@@ -4,23 +4,42 @@
   min-height: 0;
   margin: 0;
   padding: 0;
-  font-size: 14px;
+  font-size: 13px;
   font-family: FiraCode Nerd Font;
+}
+
+window *:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+
+#custom-l1, #custom-l2,
+#custom-r1, #custom-r2, #custom-r3, #custom-r4, #custom-r5 {
+  font-size: 19px;
 }
 
 window#waybar {
 	background-color: #282828;
+	/* color: #949494; */
+}
+
+window#waybar,
+#network,
+#language,
+#clock,
+#custom-shutdown {
 	color: #949494;
 }
 
 #workspaces button,
 #mode,
 #window,
-#clock,
-#language,
 #network,
+#language,
+#clock,
 #custom-shutdown {
-  padding-top: 4px;
+  padding-top: 2px;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -32,7 +51,9 @@ window#waybar {
   }
 }
 
-#custom-launcher{
+#custom-launcher {
+  /* more weird hover effects */
+  background: inherit;
 	background-color: #d65d0e;
 	color: #504945;
   padding-left: 5px;
@@ -41,7 +62,6 @@ window#waybar {
 }
 
 #custom-l1{
-  font-size: 18px;
 	color: #d65d0e;
 	background: #4a4a4a;
 }
@@ -54,6 +74,11 @@ window#waybar {
   color: white;
 }
 
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
 #workspaces button.focused {
   color: #ff8700;
 }
@@ -63,7 +88,6 @@ window#waybar {
 }
 
 #custom-l2{
-  font-size: 18px;
 	color: #4a4a4a;
 	background: transparent;
 }
@@ -74,7 +98,6 @@ window#waybar {
 }
 
 #custom-r1 {
-  font-size: 18px;
   color: #4a4a4a;
   background: transparent;
 }
@@ -84,28 +107,24 @@ window#waybar {
 }
 
 #custom-r2 {
-  font-size: 18px;
   color: #3a3a3a;
   background: #4a4a4a;
 }
 
-#custom-keyboard-layout, #language {
+#language {
   background: #3a3a3a;
 }
 
 #custom-r3 {
-  font-size: 18px;
   color: #4e4e4e;
   background: #3a3a3a;
 }
 
 #clock {
-  /* font-weight: bold; */
   background: #4e4e4e;
 }
 
 #custom-r4 {
-  font-size: 18px;
   color: #949494;
   background: #4e4e4e;
 }
@@ -117,12 +136,13 @@ window#waybar {
 }
 
 #custom-r5 {
-  font-size: 18px;
   color: #d65d0e;
   background: #949494;
 }
 
 #custom-shutdown{
+  /* more weird hover effects */
+  background: inherit;
 	background-color: #d65d0e;
 	color: #504945;
   padding-left: 5px;
