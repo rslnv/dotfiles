@@ -27,3 +27,6 @@ keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- keymap("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
