@@ -35,6 +35,8 @@ window#waybar,
 #workspaces button,
 #mode,
 #window,
+#wireplumber,
+#bluetooth,
 #network,
 #language,
 #clock,
@@ -102,7 +104,7 @@ window#waybar,
   background: transparent;
 }
 
-#network {
+#wireplumber, #network {
   background: #4a4a4a;
 }
 
@@ -111,7 +113,7 @@ window#waybar,
   background: #4a4a4a;
 }
 
-#language {
+#bluetooth, #language {
   background: #3a3a3a;
 }
 
