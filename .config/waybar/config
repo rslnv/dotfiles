@@ -1,35 +1,25 @@
 {
   "layer": "top",
-  "position": "top",
+  "position": "right",
   "output": "DP-1",
-
-  // If height property would be not present, it'd be calculated dynamically
-  /* "height": 20, */
 
   "modules-left": [
     "custom/launcher",
-    "custom/l1",
     "sway/workspaces",
-    "custom/l2",
-    "sway/mode"
+    "sway/scratchpad",
+    "sway/mode",
   ],
   "modules-center": [
-    "sway/window"
+    "clock#stats",
+    "clock#time",
+    "clock#date",
   ],
   "modules-right": [
-    "custom/r1",
     "wireplumber",
-    "custom/r2",
     "bluetooth",
-    "custom/r3",
     "network",
-    "custom/r2",
     "sway/language",
-    "custom/r3",
-    "clock#date",
-    "custom/r4",
     "tray",
-    "custom/r5",
     "custom/shutdown"
   ],
 
@@ -38,91 +28,83 @@
     "format": "",
     "tooltip": false
   },
-  "custom/l1": {
-    "format": "",
-    "tooltip": false
-  },
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{name}"
   },
-  "custom/l2": {
-    "format": "",
-    "tooltip": false
+  "sway/scratchpad": {
+    //"format": "{icon} {count}",
+    "format": "{icon}",
+    "show-empty": false,
+    "format-icons": ["", "󰘔", "󱃶"],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}",
+    "on-click": "swaymsg scratchpad show"
   },
   "sway/mode": {
-    "format": " {}"
-  },
-  "sway/window": {
-    "format": "{}",
-    "max-length": 120
+    "format": "󰩨 {}",
+    "rotate": 270 
   },
 
-  "custom/r1": {
-    "format": "",
-    "tooltip": false
-  },
   "wireplumber": {
-      "format": "{icon} {volume}%",
-      "format-muted": "",
-      // "on-click": "helvum",
-      "on-click": "pavucontrol",
-      "format-icons": ["", "", ""]
+    "format": "{icon}",
+    "format-muted": "󰝟", 
+    "on-click": "pavucontrol",
+    "on-right-click": "",
+    "format-icons": ["", "", ""],
+    "tooltip-format": "{node_name}\n{volume}%"
   },
+
   "bluetooth": {
-    //"format": " {status}",
-    "format": " {}",
-    "format-connected": " {device_alias}",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format": "",
+    //"format-connected": " {device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "blueberry"
+    "on-click": "blueberry",
+    "on-click-right": "rfkill toggle bluetooth"
   },
   "network": {
     "interval": 5,
-    "format-wifi": " {signalStrength}%", // Icon: wifi
-    "tooltip-format-wifi": "{essid}\n{ifname}\n{ipaddr}",
-    "format-ethernet": "", // Icon: ethernet
+    "format-wifi": "{icon}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format-wifi": "{signalStrength}%\n{essid}\n{ifname}\n{ipaddr}",
+    "format-ethernet": "󰈀", // Icon: ethernet
     "tooltip-format-ethernet": "{ifname} -> {ipaddr}/{cid}",
     "format-disconnected": "⚠",
     "tooltip-format-disconnected": "No network",
     "on-click": "nm-connection-editor"
   },
-  "custom/r2": {
-    "format": "",
-    "tooltip": false
+  "clock#time": {
+    "tooltip-format": "{:%A\nWeek %V\n%e %B\n%Y}",
+    "on-click": "gnome-calendar",
+    "format": "{:%H\n%M}",
   },
   "clock#date": {
-    "interval": 10,
-    "format": "{:%e/%m/%y %H:%M}", // Icon: calendar-alt
-    "tooltip-format": "{:%A %e %B %Y}",
-    "on-click": "gnome-calendar"
+    "tooltip-format": "{:%A\nWeek %V\n%e %B\n%Y}",
+    "on-click": "gnome-calendar",
+    "format": "{:%e\n%m\n%y}",
   },
-  "custom/r3": {
-    "format": "",
-    "tooltip": false
+  "clock#stats": {
+    "tooltip-format": "{:%A\nWeek %V\n%e %B\n%Y}",
+    "on-click": "gnome-calendar",
+    "format": "{:0%u\n%V}",
   },
   "sway/language": {
-    "format": " {}",
+    "format": "{}",
     "min-length": 5,
     "tooltip": false,
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
   },
-  "custom/r4": {
-    "format": "",
-    "tooltip": false
-  },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 24,
     "spacing": 10
-  },
-  "custom/r5": {
-    "format": "",
-    "tooltip": false
   },
   "custom/shutdown": {
       "format": "",

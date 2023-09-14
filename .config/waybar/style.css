@@ -8,28 +8,10 @@
   font-family: FiraCode Nerd Font;
 }
 
-window *:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
-}
-
-
-#custom-l1, #custom-l2,
-#custom-r1, #custom-r2, #custom-r3, #custom-r4, #custom-r5 {
-  font-size: 19px;
-}
-
 window#waybar {
+  color: #a89984;
 	background-color: #282828;
-	/* color: #949494; */
-}
-
-window#waybar,
-#network,
-#language,
-#clock,
-#custom-shutdown {
-	color: #949494;
+  border-left: 1px solid #3c3836;
 }
 
 #workspaces button,
@@ -41,114 +23,85 @@ window#waybar,
 #language,
 #clock,
 #custom-shutdown {
-  padding-top: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: black;
+    color: #282828;
   }
 }
 
 #custom-launcher {
-  /* more weird hover effects */
-  background: inherit;
-	background-color: #d65d0e;
-	color: #504945;
-  padding-left: 5px;
-  padding-right: 10px;
-  font-size: 18px;
+  color: #458588;
+  font-size: 24px;
+  padding-right: 7px;
 }
 
-#custom-l1{
-	color: #d65d0e;
-	background: #4a4a4a;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-  padding-left: 2px;
-  padding-right: 2px;
-  background: #4a4a4a;
-  color: white;
+  color: #a89984;
 }
-
-#workspaces button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
+#workspaces button:hover, #workspaces button.focused:hover {
+  color: #928374;
 }
-
 #workspaces button.focused {
-  color: #ff8700;
+  color: #fbf1c7;
+  font-weight: bold;
+}
+#workspaces button.urgent {
+  color: #cc241d;
 }
 
-#workspaces button.urgent{
-  color: #d05c5c;
-}
-
-#custom-l2{
-	color: #4a4a4a;
-	background: transparent;
+#scratchpad {
+  padding-top: 10px;
 }
 
 #mode {
-  background: transparent;
-  color: #d05c5c;
-}
-
-#custom-r1 {
-  color: #4a4a4a;
-  background: transparent;
-}
-
-#wireplumber, #network {
-  background: #4a4a4a;
-}
-
-#custom-r2 {
-  color: #3a3a3a;
-  background: #4a4a4a;
-}
-
-#bluetooth, #language {
-  background: #3a3a3a;
-}
-
-#custom-r3 {
-  color: #4e4e4e;
-  background: #3a3a3a;
+  color: #fb4934;
+  animation-name: blink;
+  animation-duration: 1.0s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #clock {
-  background: #4e4e4e;
+  font-size: 10px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+#clock.time {
+  font-size: 14px;
+  color: #fbf1c7;
+  font-weight: bold;
 }
 
-#custom-r4 {
-  color: #949494;
-  background: #4e4e4e;
+#scratchpad,
+#wireplumber,
+#bluetooth,
+#network,
+#custom-shutdown {
+  padding-right: 2px;
+}
+
+#bluetooth.on {
+  color: #458588;
+}
+#bluetooth.connected {
+  color: #98971a;
 }
 
 #tray {
-  background-color: #949494;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-#custom-r5 {
-  color: #d65d0e;
-  background: #949494;
-}
-
-#custom-shutdown{
-  /* more weird hover effects */
-  background: inherit;
-	background-color: #d65d0e;
-	color: #504945;
-  padding-left: 5px;
-  padding-right: 10px;
+#custom-shutdown {
+  color: #fb4934;
+  font-size: 16px;
 }
 
 #idle_inhibitor {
