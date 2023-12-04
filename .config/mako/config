@@ -1,5 +1,25 @@
 # man 5 mako
 # https://github.com/emersion/mako/wiki/Example-configuration
 
-ignore-timeout=1
-default-timeout=5000
+anchor=top-center
+default-timeout=10000
+layer=overlay
+border-size=2
+padding=10
+font=FiraCode Nerd Font 10
+text-alignment=left
+outer-margin=20,0,0
+text-color=#ebdbb2
+background-color=#3c3836
+
+[urgency=low]
+# blue
+border-color=#458588
+
+[urgency=normal]
+# orange
+border-color=#d65d0e
+
+[urgency=critical]
+# red
+border-color=#cc341d

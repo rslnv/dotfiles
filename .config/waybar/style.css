@@ -23,10 +23,10 @@ window#waybar {
 #language,
 #clock,
 #custom-shutdown {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 0;
-  padding-right: 0;
+  /* padding-top: 5px; */
+  /* padding-bottom: 5px; */
+  /* padding-left: 0; */
+  /* padding-right: 0; */
 }
 
 @keyframes blink {
@@ -41,10 +41,16 @@ window#waybar {
   padding-right: 7px;
 }
 
+#workspaces {
+  padding-top: 10px;
+}
 #workspaces button {
   color: #a89984;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
-#workspaces button:hover, #workspaces button.focused:hover {
+#workspaces button:hover,
+#workspaces button.focused:hover {
   color: #928374;
 }
 #workspaces button.focused {
@@ -60,6 +66,7 @@ window#waybar {
 }
 
 #mode {
+  padding-top: 10px;
   color: #fb4934;
   animation-name: blink;
   animation-duration: 1.0s;
@@ -69,37 +76,50 @@ window#waybar {
 }
 
 #clock {
-  font-size: 10px;
-  padding-bottom: 0;
+  font-size: 12px;
   padding-top: 0;
+  padding-bottom: 0;
 }
 #clock.time {
   font-size: 14px;
   color: #fbf1c7;
   font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 #scratchpad,
 #wireplumber,
 #bluetooth,
-#network,
 #custom-shutdown {
   padding-right: 2px;
 }
 
-#bluetooth.on {
+#bluetooth,
+#network {
+  padding-top: 3px;
+}
+
+#network {
+  padding-right: 4px;
+}
+
+#bluetooth.connected {
   color: #458588;
 }
-#bluetooth.connected {
-  color: #98971a;
+
+#language {
+  padding-top: 2px;
 }
 
 #tray {
-  padding-top: 5px;
+  padding-top: 10px;
   padding-bottom: 5px;
 }
 
 #custom-shutdown {
+  padding-top: 5px;
+  padding-bottom: 5px;
   color: #fb4934;
   font-size: 16px;
 }

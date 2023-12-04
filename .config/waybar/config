@@ -1,5 +1,5 @@
 {
-  "layer": "top",
+  "layer": "bottom",
   "position": "right",
   "output": "DP-1",
 
@@ -15,7 +15,7 @@
     "clock#date",
   ],
   "modules-right": [
-    "wireplumber",
+    // "wireplumber",
     "bluetooth",
     "network",
     "sway/language",
@@ -47,14 +47,14 @@
     "rotate": 270 
   },
 
-  "wireplumber": {
-    "format": "{icon}",
-    "format-muted": "󰝟", 
-    "on-click": "pavucontrol",
-    "on-right-click": "",
-    "format-icons": ["", "", ""],
-    "tooltip-format": "{node_name}\n{volume}%"
-  },
+  //"wireplumber": {
+  //  "format": "{icon}",
+  //  "format-muted": "󰝟",
+  //  "on-click": "pavucontrol",
+  //  "on-right-click": "",
+  //  "format-icons": ["", "", ""],
+  //  "tooltip-format": "{node_name}\n{volume}%"
+  //},
 
   "bluetooth": {
     "format-off": "󰂲",
@@ -81,20 +81,20 @@
     "tooltip-format-disconnected": "No network",
     "on-click": "nm-connection-editor"
   },
+  "clock#stats": {
+    "tooltip-format": "{:%A\nWeek %V\n%d %B\n%Y}",
+    "on-click": "gnome-calendar",
+    "format": "{:0%u\n%V}",
+  },
   "clock#time": {
-    "tooltip-format": "{:%A\nWeek %V\n%e %B\n%Y}",
+    "tooltip-format": "{:%A\nWeek %V\n%d %B\n%Y}",
     "on-click": "gnome-calendar",
     "format": "{:%H\n%M}",
   },
   "clock#date": {
-    "tooltip-format": "{:%A\nWeek %V\n%e %B\n%Y}",
+    "tooltip-format": "{:%A\nWeek %V\n%d %B\n%Y}",
     "on-click": "gnome-calendar",
-    "format": "{:%e\n%m\n%y}",
-  },
-  "clock#stats": {
-    "tooltip-format": "{:%A\nWeek %V\n%e %B\n%Y}",
-    "on-click": "gnome-calendar",
-    "format": "{:0%u\n%V}",
+    "format": "{:%d\n%m\n%y}",
   },
   "sway/language": {
     "format": "{}",
