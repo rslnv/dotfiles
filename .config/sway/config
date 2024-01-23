@@ -60,6 +60,10 @@ bindsym $mod+q kill
 # Start your launcher
 bindsym $mod+space exec wofi --show drun -I
 bindsym $mod+Shift+space exec wofi --show run
+
+# Clipboard history
+bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+
 # fixes issue with gmone apps not launching through drun
 exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus 
 
@@ -201,7 +205,8 @@ bar {
 for_window {
   [app_id="(?i)popup"] floating enable
   [app_id="nm-connection-editor"] floating enable, resize set 600 400
-  [app_id="pavucontrol"] floating enable, resize set 600 400
+  [app_id="pavucontrol"] floating enable, resize set 800 600
+  [app_id="blueberry"] floating enable, resize set 600 800
 
   [app_id="org.gnome.Calculator"] floating enabled
   [app_id="org.gnome.Calendar"] floating enabled
@@ -211,7 +216,7 @@ for_window {
 }
 
 # setting theme
-set $gnome-schema org.gnome.desktop.interface
+#set $gnome-schema org.gnome.desktop.interface
 exec_always {
   gsettings set $gnome-schema gtk-theme 'Adwaita'
   gsettings set $gnome-schema icon-theme 'Adwaita'
@@ -220,5 +225,15 @@ exec_always {
 
 # notifications
 exec mako
+
+# polkit 'polkit-gnome'
+exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
+# tray icon might be missing without a delay
+exec sleep 3 && keepassxc
+
+# clipboard history for text and images
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
 
 include /etc/sway/config.d/*

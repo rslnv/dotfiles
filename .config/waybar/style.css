@@ -10,7 +10,7 @@
 
 window#waybar {
   color: #a89984;
-	background-color: #282828;
+  background-color: #282828;
   border-left: 1px solid #3c3836;
 }
 
@@ -115,6 +115,16 @@ window#waybar {
 #tray {
   padding-top: 10px;
   padding-bottom: 5px;
+}
+/*#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}*/
+/*#tray menu > *:not(separator) {*/
+#tray menu menuitem {
+  padding: 10px 0;
 }
 
 #custom-shutdown {

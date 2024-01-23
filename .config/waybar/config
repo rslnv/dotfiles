@@ -103,8 +103,8 @@
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
   },
   "tray": {
-    "icon-size": 24,
-    "spacing": 10
+    "icon-size": 28,
+    "spacing": 4
   },
   "custom/shutdown": {
       "format": "",
