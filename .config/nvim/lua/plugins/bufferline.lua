@@ -1,19 +1,14 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
-	print("bufferline is not available")
-	return
-end
-
-bufferline.setup({
-	options = {
-		diagnostics = "nvim_lsp",
-		offsets = {
-			{
-				filetype = "NvimTree",
-				text = "File Explorer",
-				highlight = "Directory",
-				text_align = "left",
-			},
-		},
+return {
+	"akinsho/bufferline.nvim",
+	version = "*",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = function()
+		require("bufferline").setup({})
+	end,
+	keys = {
+		--{ '<LEADER>bp', '<CMD>bprev<CR>', desc = '[B]uffer [P]rev' },
+		--{ '<LEADER>bn', '<CMD>bnext<CR>', desc = '[B]uffer [N]ext' }
+		{ "<S-h>", "<CMD>bprev<CR>", desc = "[B]uffer [P]rev" },
+		{ "<S-l>", "<CMD>bnext<CR>", desc = "[B]uffer [N]ext" },
 	},
-})
+}

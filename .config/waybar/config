@@ -84,7 +84,7 @@
   "clock#stats": {
     "tooltip-format": "{:%A\nWeek %V\n%d %B\n%Y}",
     "on-click": "gnome-calendar",
-    "format": "{:0%u\n%V}",
+    "format": "0{:%u\n%V}",
   },
   "clock#time": {
     "tooltip-format": "{:%A\nWeek %V\n%d %B\n%Y}",
@@ -109,6 +109,6 @@
   "custom/shutdown": {
       "format": "",
       "tooltip": false,
-      "on-click": "~/.config/wofi/power-menu.sh"
+      "on-click": "~/.config/scripts/power-menu.sh"
   },
 }

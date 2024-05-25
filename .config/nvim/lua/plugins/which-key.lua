@@ -1,27 +1,27 @@
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-	print("which-key is not available")
-	return
-end
-
-which_key.register({
-	e = { "<cmd>NvimTreeToggle<CR>", "File tree" },
-	b = {
-		name = "Buffers",
-		b = { "<cmd>bd<CR>", "Close current" },
-		a = { "<cmd>bufdo bd<CR>", "Close all" },
-		o = { "<cmd>%bd | e# | bd#<CR>", "Close other" },
-		c = { "<cmd>BufferLinePickClose<CR>", "Close selected" },
-		s = { "<cmd>BufferLinePick<CR>", "Select" },
-		p = { "<cmd>BufferLineTogglePin<CR>", "Pin current" },
+return {
+	"folke/which-key.nvim",
+	event = "VeryLazy",
+	init = function()
+		vim.o.timeout = true
+		vim.o.timeoutlen = 300
+	end,
+	config = function()
+		require("which-key").register({
+			["<leader>c"] = { name = "Code", _ = "which_key_ignore" },
+			["<leader>h"] = { name = "Hunk", _ = "which_key_ignore" },
+			["<leader>d"] = { name = "Debugger", _ = "which_key_ignore" },
+			-- ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+			-- ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+			-- ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+			-- ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+			-- ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+			-- ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+			-- ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+		})
+	end,
+	opts = {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
 	},
-	f = {
-		name = "Find",
-		f = { "<cmd>Telescope find_files<CR>", "Files" },
-		g = { "<cmd>Telescope live_grep<CR>", "Text" },
-		b = { "<cmd>Telescope buffers<CR>", "Buffers" },
-		h = { "<cmd>Telescope help_tags<CR>", "Help" },
-		c = { "<cmd>Telescope commands<CR>", "Commands" },
-		C = { "<cmd>Telescope command_history<CR>", "Command history" },
-	},
-}, { prefix = "<leader>" })
+}

@@ -1,26 +1,41 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-	print("telescope is not available")
-	return
-end
-
-telescope.setup({
-	defaults = {
-		layout_config = {
-			horizontal = {
-				width = 0.9,
-				height = 0.9,
+return {
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+				cond = function()
+					return vim.fn.executable("make") == 1
+				end,
+				config = function()
+					require("telescope").load_extension("fzf")
+					-- print "telescope loading fzf extension"
+				end,
+			},
+		},
+		opts = {
+			defaults = {
+				layout_strategy = "vertical",
+				layout_config = {
+					vertical = { width = 0.8 },
+				},
 			},
 		},
 	},
-	extensions = {
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
-		},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		config = function()
+			require("telescope").setup({
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+				},
+			})
+			require("telescope").load_extension("ui-select")
+		end,
 	},
-})
-
-telescope.load_extension("fzf")
+}

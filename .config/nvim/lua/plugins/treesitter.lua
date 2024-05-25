@@ -1,20 +1,16 @@
-local status_ok, nvim_treesitter = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-	return
-end
-
-nvim_treesitter.setup({
-	ensure_installed = { "help", "c_sharp", "javascript", "typescript", "css", "lua", "rust" },
-	sync_install = false,
-	auto_install = true,
-
-	ignore_install = { "" }, -- List of parsers to ignore installing
-
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-	indent = {
-		enable = true,
-	},
-})
+return  {
+  'nvim-treesitter/nvim-treesitter',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
+  build = ':TSUpdate',
+  config = function()
+    require('nvim-treesitter.configs').setup({
+      -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+      ensure_installed = {'lua', 'c_sharp', 'typescript', 'html', 'css', 'scss'},
+      sync_install = false,
+      highlight = { enable = true },
+      indent = { enable = true },
+    })
+  end
+}
