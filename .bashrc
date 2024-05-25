@@ -12,7 +12,7 @@ export CHROME_BIN="/usr/bin/chromium"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth
 
 shopt -s autocd # change to named directory
 shopt -s cdspell # autocorrects cd misspellings
@@ -26,8 +26,8 @@ shopt -s checkwinsize # checks term size when bash regains control
 bind "set completion-ignore-case on"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+export HISTSIZE=1000
+export HISTFILESIZE=20000
 
 # load aliases
 if [ -f ~/.bash_aliases ]; then
