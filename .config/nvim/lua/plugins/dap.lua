@@ -44,7 +44,7 @@ return {
 
 		local function get_program()
 			local result = vim.system({ "dotnet", "build" }, { text = true }):wait()
-			local stdout = result.stdout
+			local stdout = result.stdout or ""
 			local _, s = string.find(stdout, "-> ")
 
 			if s ~= nil then
@@ -100,12 +100,6 @@ return {
 
 		vim.keymap.set({ "n", "v" }, "<Leader>dh", widgets.hover, { desc = "Hover" })
 		vim.keymap.set({ "n", "v" }, "<Leader>dp", widgets.preview, { desc = "Preview" })
-		-- vim.keymap.set("n", "<Leader>df", function()
-		-- 	widgets.centered_float(widgets.frames)
-		-- end, { desc = "Frames" })
-		-- vim.keymap.set("n", "<Leader>ds", function()
-		-- 	widgets.centered_float(widgets.scopes)
-		-- end, { desc = "Scopes" })
 
 		vim.keymap.set("n", "<F1>", dap.continue, { desc = "Continue" })
 		vim.keymap.set("n", "<F2>", dap.step_into, { desc = "Step Into" })
@@ -117,17 +111,8 @@ return {
 		vim.keymap.set("n", "<F8>", dap.terminate, { desc = "Terminate" })
 		vim.keymap.set("n", "<F9>", dap.close, { desc = "Close without terminating" })
 
-		dap.listeners.before.attach.dapui_config = function()
-			dapui.open()
-		end
-		dap.listeners.before.launch.dapui_config = function()
-			dapui.open()
-		end
-		dap.listeners.before.event_terminated.dapui_config = function()
-			dapui.close()
-		end
-		dap.listeners.before.event_exited.dapui_config = function()
-			dapui.close()
-		end
+		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 	end,
 }

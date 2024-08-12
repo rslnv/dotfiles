@@ -12,7 +12,6 @@ return {
 				end,
 				config = function()
 					require("telescope").load_extension("fzf")
-					-- print "telescope loading fzf extension"
 				end,
 			},
 		},
