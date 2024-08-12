@@ -243,5 +243,6 @@ exec sleep 3 && keepassxc
 # clipboard history for text and images
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
+exec cliphist wipe
 
 include /etc/sway/config.d/*
