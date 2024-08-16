@@ -1,39 +1,82 @@
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking",
-  group = vim.api.nvim_create_augroup("UserHighlightYank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+	desc = "Highlight when yanking",
+	group = vim.api.nvim_create_augroup("UserHighlightYank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = ev.buff, desc = "Rename" })
-    vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Actions" })
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = ev.buff, desc = "References" })
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		local opts = { buffer = ev.buf, silent = true }
+		vim.keymap.set(
+			"n",
+			"gD",
+			vim.lsp.buf.declaration,
+			vim.tbl_extend("error", opts, { desc = "Jump to declaration" })
+		)
+		vim.keymap.set(
+			"n",
+			"gd",
+			vim.lsp.buf.definition,
+			vim.tbl_extend("error", opts, { desc = "Jump to definition" })
+		)
+		vim.keymap.set(
+			"n",
+			"gi",
+			vim.lsp.buf.implementation,
+			vim.tbl_extend("error", opts, { desc = "List implementations" })
+		)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("error", opts, { desc = "List references" }))
 
-    vim.keymap.set("n", "<space>cf", function()
-      vim.lsp.buf.format({ async = true })
-    end, { buffer = ev.buf, desc = "Format" })
-  end,
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("error", opts, { desc = "Symbol info" }))
+		vim.keymap.set(
+			"n",
+			"<C-k>",
+			vim.lsp.buf.signature_help,
+			vim.tbl_extend("error", opts, { desc = "Signature help" })
+		)
+
+		vim.keymap.set(
+			"n",
+			"<space>wa",
+			vim.lsp.buf.add_workspace_folder,
+			vim.tbl_extend("error", opts, { desc = "Add workspace folder" })
+		)
+		vim.keymap.set(
+			"n",
+			"<space>wr",
+			vim.lsp.buf.remove_workspace_folder,
+			vim.tbl_extend("error", opts, { desc = "Remove workspace folder" })
+		)
+		vim.keymap.set("n", "<space>wl", function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, vim.tbl_extend("error", opts, { desc = "List workspace folders" }))
+
+		vim.keymap.set(
+			"n",
+			"<space>D",
+			vim.lsp.buf.type_definition,
+			vim.tbl_extend("error", opts, { desc = "Jump to type definition" })
+		)
+		vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, vim.tbl_extend("error", opts, { desc = "Rename symbol" }))
+		vim.keymap.set(
+			{ "n", "v" },
+			"<space>ca",
+			vim.lsp.buf.code_action,
+			vim.tbl_extend("error", opts, { desc = "Actions" })
+		)
+
+		vim.keymap.set("n", "<space>cf", function()
+			vim.lsp.buf.format({ async = true })
+		end, vim.tbl_extend("error", opts, { desc = "Format" }))
+	end,
 })
