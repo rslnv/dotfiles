@@ -15,7 +15,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic prev" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic next" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Quickfix list" })
+vim.keymap.set("n", "<leader>Q", vim.diagnostic.setloclist, { desc = "Quickfix list" })
+vim.keymap.set("n", "<leader>qq", builtin.diagnostics, { desc = "Global diagnostics" })
+vim.keymap.set("n", "<leader>qb", function()
+	builtin.diagnostics({ bufnr = 0 })
+end, { desc = "Buffer diagnostics" })
+vim.keymap.set("n", "<leader>ql", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })

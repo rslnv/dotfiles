@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
+		local telescope_builtin = require("telescope.builtin")
 		-- Enable completion triggered by <c-x><c-o>
 		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
@@ -26,16 +27,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set(
 			"n",
 			"gd",
-			vim.lsp.buf.definition,
-			vim.tbl_extend("error", opts, { desc = "Jump to definition" })
+			telescope_builtin.lsp_definitions,
+			vim.tbl_extend("error", opts, { desc = "List definitions" })
+			-- vim.lsp.buf.definition,
+			-- vim.tbl_extend("error", opts, { desc = "Jump to definition" })
+		)
+		vim.keymap.set(
+			"n",
+			"gt",
+			telescope_builtin.lsp_type_definitions,
+			vim.tbl_extend("error", opts, { desc = "List type definition" })
+			-- "<space>D",
+			-- vim.lsp.buf.type_definition,
+			-- vim.tbl_extend("error", opts, { desc = "Jump to type definition" })
 		)
 		vim.keymap.set(
 			"n",
 			"gi",
-			vim.lsp.buf.implementation,
+			telescope_builtin.lsp_implementations,
+			-- vim.lsp.buf.implementation,
 			vim.tbl_extend("error", opts, { desc = "List implementations" })
 		)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("error", opts, { desc = "List references" }))
+		vim.keymap.set(
+			"n",
+			"gr",
+			telescope_builtin.lsp_references,
+			vim.tbl_extend("error", opts, { desc = "List references" })
+			-- vim.lsp.buf.references,
+			-- vim.tbl_extend("error", opts, { desc = "List references" })
+		)
 
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("error", opts, { desc = "Symbol info" }))
 		vim.keymap.set(
@@ -61,12 +81,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, vim.tbl_extend("error", opts, { desc = "List workspace folders" }))
 
-		vim.keymap.set(
-			"n",
-			"<space>D",
-			vim.lsp.buf.type_definition,
-			vim.tbl_extend("error", opts, { desc = "Jump to type definition" })
-		)
 		vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, vim.tbl_extend("error", opts, { desc = "Rename symbol" }))
 		vim.keymap.set(
 			{ "n", "v" },
@@ -78,5 +92,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<space>cf", function()
 			vim.lsp.buf.format({ async = true })
 		end, vim.tbl_extend("error", opts, { desc = "Format" }))
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+	desc = "Do linting",
+	group = vim.api.nvim_create_augroup("UserLinting", { clear = true }),
+	callback = function()
+		require("lint").try_lint()
 	end,
 })
