@@ -99,6 +99,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 	desc = "Do linting",
 	group = vim.api.nvim_create_augroup("UserLinting", { clear = true }),
 	callback = function()
-		require("lint").try_lint()
+		local status_ok, lint = pcall(require, "lint")
+		if not status_ok then
+			print("linting is not available")
+			return
+		end
+		lint.try_lint()
 	end,
 })
