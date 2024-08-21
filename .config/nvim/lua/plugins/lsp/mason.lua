@@ -34,7 +34,8 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "stylua",
-        "prettierd",
+        "prettier",
+        -- "prettierd",
         "eslint_d",
       },
     })

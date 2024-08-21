@@ -4,6 +4,8 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Text" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help" })
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Keymaps" })
+vim.keymap.set("n", "<leader>fc", builtin.command_history, { desc = "Command history" })
+vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "Registers" })
 
 -- move selected text up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
