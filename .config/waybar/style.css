@@ -95,6 +95,17 @@ window#waybar {
   padding-right: 2px;
 }
 
+#temperature.gpu {
+  padding-bottom: 5px;
+}
+#custom-cpu-label {
+  padding-right: 7px;
+}
+#custom-gpu-label {
+  padding-right: 5px;
+  padding-top: 3px
+}
+
 #bluetooth,
 #network {
   padding-top: 3px;
