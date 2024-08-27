@@ -19,7 +19,4 @@ return {
 			end,
 		},
 	},
-	config = function(_, opts)
-		require("bufferline").setup(opts)
-	end,
 }

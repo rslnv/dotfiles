@@ -7,12 +7,18 @@ return {
 	{
 		"echasnovski/mini.pairs",
 		event = "VeryLazy",
-		config = function()
-			require("mini.pairs").setup()
-		end,
+    opts = {},
 	},
 	{
 		"mbbill/undotree",
 		event = "VeryLazy",
+	},
+	{
+		"brenoprata10/nvim-highlight-colors",
+		event = "VeryLazy",
+		opts = {
+			render = "virtual",
+			virtual_symbol = "",
+		},
 	},
 }
