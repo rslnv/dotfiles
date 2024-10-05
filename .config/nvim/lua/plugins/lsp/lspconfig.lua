@@ -58,7 +58,7 @@ return {
 
 			["angularls"] = function()
 				local angular_path = "/usr/lib/node_modules/"
-				-- -- local angular_path = vim.fn.stdpath("data") .. "/mason/packages/angular-language-server/node_modules"
+				-- local angular_path = vim.fn.stdpath("data") .. "/mason/packages/angular-language-server/node_modules/"
 				local angular_cmd = {
 					"ngserver",
 					"--stdio",
