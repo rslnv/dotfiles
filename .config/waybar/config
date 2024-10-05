@@ -20,10 +20,10 @@
     "custom/gpu-label",
     "temperature#gpu",
     // "wireplumber",
-    "bluetooth",
-    "network",
-    "sway/language",
+    // "bluetooth",
+    // "network",
     "tray",
+    "sway/language",
     "custom/shutdown"
   ],
 
@@ -126,7 +126,7 @@
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
   },
   "tray": {
-    "icon-size": 28,
+    "icon-size": 24,
     "spacing": 4
   },
   "custom/shutdown": {

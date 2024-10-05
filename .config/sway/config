@@ -71,6 +71,9 @@ bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-co
 bindsym $mod+Shift+c exec cliphist list | wofi --dmenu | cliphist delete
 bindsym $mod+Shift+d exec cliphist wipe
 
+# color picker
+bindsym $mod+p exec hyprpicker --autocopy
+
 # fixes issue with gmone apps not launching through drun
 exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus 
 
@@ -214,6 +217,7 @@ for_window {
   [app_id="nm-connection-editor"] floating enable, resize set 600 400
   [app_id="pavucontrol"] floating enable, resize set 800 600
   [app_id="blueberry"] floating enable, resize set 600 800
+  [app_id="blueman-manager"] floating enable, resize set 600 800
 
   [app_id="org.gnome.Calculator"] floating enabled
   [app_id="org.gnome.Calendar"] floating enabled
@@ -224,7 +228,7 @@ for_window {
 }
 
 # setting theme
-#set $gnome-schema org.gnome.desktop.interface
+set $gnome-schema org.gnome.desktop.interface
 exec_always {
   gsettings set $gnome-schema gtk-theme 'Adwaita'
   gsettings set $gnome-schema icon-theme 'Adwaita'
@@ -244,5 +248,8 @@ exec sleep 3 && keepassxc
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec cliphist wipe
+
+exec nm-applet --indicator
+exec blueman-applet
 
 include /etc/sway/config.d/*
