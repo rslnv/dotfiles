@@ -27,4 +27,5 @@ require("lazy").setup({
 })
 
 require("autocommands")
+require("functions")
 require("keymaps")
