@@ -12,6 +12,10 @@ return {
 		},
 	},
 	opts = {
+		format_on_save = {
+			timeout_ms = 500,
+			lsp_format = "fallback",
+		},
 		formatters_by_ft = {
 			lua = { "stylua" },
 			javascript = { "prettier" },
@@ -20,6 +24,7 @@ return {
 			typescriptreact = { "prettier" },
 			svelte = { "prettier" },
 			css = { "prettier" },
+			scss = { "prettier" },
 			html = { "prettier" },
 			-- htmlangular = { "prettier" },
 			json = { "prettier" },
