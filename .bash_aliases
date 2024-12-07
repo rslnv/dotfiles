@@ -29,6 +29,5 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME'
 alias dotfileslazy='/usr/bin/lazygit --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME'
 
 # rclone
-alias rcmd='rclone mount Dropbox: ~/Dropbox'
 
-alias v='~/Downloads/nvim.appimage'
+alias v='nvim'
