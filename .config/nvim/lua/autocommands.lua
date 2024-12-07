@@ -91,10 +91,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.tbl_extend("error", opts, { desc = "Actions" })
 		)
 
-    -- more tsserver specific code actions
-    -- https://www.lazyvim.org/extras/lang/typescript
-    -- https://www.reddit.com/r/neovim/comments/192jxlv/how_to_get_tsserver_auto_add_imports_on_save/
-    -- https://neovim.io/doc/user/lsp.html
+		-- more tsserver specific code actions
+		-- https://www.lazyvim.org/extras/lang/typescript
+		-- https://www.reddit.com/r/neovim/comments/192jxlv/how_to_get_tsserver_auto_add_imports_on_save/
+		-- https://neovim.io/doc/user/lsp.html
 		-- if client and client.config.name == "tsserver" then
 		if client and client.config.name == "ts_ls" then
 			vim.keymap.set("n", "<leader>co", function()
