@@ -8,7 +8,8 @@
 export TERM="alacritty"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export CHROME_BIN="/usr/bin/chromium"
+export MANPAGER="nvim +Man!"
+export CHROME_BIN="chromium"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
