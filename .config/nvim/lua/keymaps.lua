@@ -8,6 +8,26 @@ vim.keymap.set("n", "<leader>fc", builtin.command_history, { desc = "Command his
 vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "Registers" })
 vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Document symbols" })
 
+vim.keymap.set("n", "<leader>ec", function()
+  builtin.find_files({ cwd = vim.fn.stdpath("config") })
+end, { desc = "Config files" })
+vim.keymap.set("n", "<leader>eC", function()
+  builtin.live_grep({ cwd = vim.fn.stdpath("config") })
+end, { desc = "Config text" })
+
+vim.keymap.set("n", "<leader>ep", function()
+  local cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+  builtin.find_files({ cwd = cwd })
+end, { desc = "Plugins files" })
+vim.keymap.set("n", "<leader>eP", function()
+  local cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+  builtin.live_grep({ cwd = cwd })
+end, { desc = "Plugins text" })
+
+vim.keymap.set("n", "<leader>xs", "<CMD>source %<CR>", { desc = "Source file" })
+vim.keymap.set("n", "<leader>xx", ":.lua<CR>", { desc = "Execute line" })
+vim.keymap.set("v", "<leader>xx", ":lua<CR>", { desc = "Execute selection" })
+
 -- move selected text up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -21,7 +41,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic next" }
 vim.keymap.set("n", "<leader>Q", vim.diagnostic.setloclist, { desc = "Quickfix list" })
 vim.keymap.set("n", "<leader>qq", builtin.diagnostics, { desc = "Global diagnostics" })
 vim.keymap.set("n", "<leader>qb", function()
-	builtin.diagnostics({ bufnr = 0 })
+  builtin.diagnostics({ bufnr = 0 })
 end, { desc = "Buffer diagnostics" })
 vim.keymap.set("n", "<leader>ql", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 
@@ -32,3 +52,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undo History" })
+
+-- Quickfix
+vim.keymap.set("n", "[c", "<CMD>cprev<CR>", { desc = "Quickfix prev" })
+vim.keymap.set("n", "]c", "<CMD>cnext<CR>", { desc = "Quickfix next" })
