@@ -28,6 +28,8 @@ alias free='free -m'                      # show sizes in MB
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME'
 alias dotfileslazy='/usr/bin/lazygit --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME'
 
+# jump to project
+alias jp='sesh connect "$(sesh list | fzf)"'
 # rclone
 
 alias v='nvim'
