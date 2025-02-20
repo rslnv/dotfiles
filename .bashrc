@@ -44,3 +44,6 @@ source /usr/share/fzf/completion.bash
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# Zoxide
+eval "$(zoxide init bash)"
