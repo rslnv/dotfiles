@@ -4,6 +4,15 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = {
+				library = {
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -22,30 +31,6 @@ return {
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
-				})
-			end,
-
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = {
-								-- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-								disable = { "missing-fields" },
-								globals = { "vim" },
-							},
-							workspace = {
-								-- make language server aware of runtime files
-								library = vim.api.nvim_get_runtime_file("", true),
-								-- library = {
-								-- 	[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								-- 	[vim.fn.stdpath("config") .. "/lua"] = true,
-								-- },
-							},
-							telemetry = { enabled = false },
-						},
-					},
 				})
 			end,
 
