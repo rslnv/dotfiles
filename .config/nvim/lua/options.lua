@@ -70,3 +70,5 @@ vim.o.sidescrolloff = scrolloff * 2
 vim.o.laststatus = 3
 
 vim.o.cursorline = true
+
+vim.o.winborder = "none"
