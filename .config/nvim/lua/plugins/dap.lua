@@ -11,52 +11,6 @@ return {
     local widgets = require("dap.ui.widgets")
 
     dapui.setup()
-    -- dapui.setup({
-    -- 	layouts = {
-    -- 		{
-    -- 			elements = {
-    -- 				{ id = "scopes", size = 0.8 },
-    -- 				{ id = "breakpoints", size = 0.2 },
-    -- 			},
-    -- 			size = 0.3,
-    -- 			position = "left",
-    -- 		},
-    -- 		{
-    -- 			elements = {
-    -- 				{ id = "stacks", size = 0.3 },
-    -- 				{ id = "watches", size = 0.4 },
-    -- 				{ id = "console", size = 0.3 },
-    -- 			},
-    -- 			size = 0.2,
-    -- 			position = "right",
-    -- 		},
-    -- 		{
-    -- 			elements = {
-    -- 				"repl",
-    -- 			},
-    -- 			size = 20,
-    -- 			position = "bottom",
-    -- 		},
-    -- 	},
-    -- })
-
-    -- require("nvim-dap-virtual-text").setup({})
-
-    local function get_program()
-      local result = vim.system({ "dotnet", "build" }, { text = true }):wait()
-      local stdout = result.stdout or ""
-      local _, s = string.find(stdout, "-> ")
-
-      if s ~= nil then
-        s = s + 1
-        local e = string.find(stdout, "\n", s)
-        if e ~= nil then
-          return stdout.sub(stdout, s, e - 1)
-        end
-      end
-
-      return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/net8.0/", "file")
-    end
 
     dap.adapters.coreclr = {
       type = "executable",
@@ -73,17 +27,63 @@ return {
         type = "coreclr",
         name = "launch - netcoredbg",
         request = "launch", -- "attach" | "launch"
-        program = get_program,
-      },
-      {
-        type = "coreclr",
-        name = "launch with args - netcoredbg",
-        request = "launch",
-        program = get_program,
-        args = function()
-          dap.history.cs.args = vim.fn.input("Arguments: ", dap.history.cs.args)
-          return vim.split(dap.history.cs.args, " ")
+        -- program = get_program,
+        program = function()
+          vim.print("Starting build process")
+
+          return coroutine.create(function(dap_run_co)
+            local items = require("utils.builder").dotnet_build_and_list_dlls()
+            if table.getn(items) == 0 then
+              coroutine.resume(dap_run_co, dap.ABORT)
+            else
+              vim.ui.select(items, { prompt = "Select dll" }, function(choice)
+                choice = choice or dap.ABORT
+                coroutine.resume(dap_run_co, choice)
+              end)
+            end
+          end)
         end,
+      },
+      -- {
+      --   type = "coreclr",
+      --   name = "launch with args - netcoredbg",
+      --   request = "launch",
+      --   program = get_program,
+      --   args = function()
+      --     dap.history.cs.args = vim.fn.input("Arguments: ", dap.history.cs.args)
+      --     return vim.split(dap.history.cs.args, " ")
+      --   end,
+      -- },
+    }
+
+    dap.adapters["pwa-node"] = {
+      type = "server",
+      host = "localhost",
+      port = "${port}",
+      executable = {
+        command = "node",
+        -- 💀 Make sure to update this path to point to your installation
+        -- args = { "/path/to/js-debug/src/dapDebugServer.js", "${port}" },
+        args = {
+          vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+          "${port}",
+        },
+      },
+    }
+    dap.configurations.typescript = {
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Launch file",
+        runtimeExecutable = "deno",
+        runtimeArgs = {
+          "run",
+          "--inspect-wait",
+          "--allow-all",
+        },
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+        attachSimplePort = 9229,
       },
     }
 
