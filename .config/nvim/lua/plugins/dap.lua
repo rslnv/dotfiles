@@ -7,6 +7,7 @@ return {
   },
   config = function()
     local dap = require("dap")
+    local dap_utils = require("dap.utils")
     local dapui = require("dapui")
     local widgets = require("dap.ui.widgets")
 
@@ -25,35 +26,26 @@ return {
     dap.configurations.cs = {
       {
         type = "coreclr",
-        name = "launch - netcoredbg",
+        name = "Attach to process",
+        request = "attach", -- "attach" | "launch"
+        processId = dap_utils.pick_process,
+      },
+      {
+        type = "coreclr",
+        name = "Launch",
         request = "launch", -- "attach" | "launch"
-        -- program = get_program,
-        program = function()
-          vim.print("Starting build process")
-
-          return coroutine.create(function(dap_run_co)
-            local items = require("utils.builder").dotnet_build_and_list_dlls()
-            if table.getn(items) == 0 then
-              coroutine.resume(dap_run_co, dap.ABORT)
-            else
-              vim.ui.select(items, { prompt = "Select dll" }, function(choice)
-                choice = choice or dap.ABORT
-                coroutine.resume(dap_run_co, choice)
-              end)
-            end
-          end)
+        program = require("utils.builder").dotnet_build_and_pick_dll,
+      },
+      {
+        type = "coreclr",
+        name = "Launch with args",
+        request = "launch",
+        program = require("utils.builder").dotnet_build_and_pick_dll,
+        args = function()
+          dap.history.cs.args = vim.fn.input("Arguments: ", dap.history.cs.args)
+          return vim.split(dap.history.cs.args, " ")
         end,
       },
-      -- {
-      --   type = "coreclr",
-      --   name = "launch with args - netcoredbg",
-      --   request = "launch",
-      --   program = get_program,
-      --   args = function()
-      --     dap.history.cs.args = vim.fn.input("Arguments: ", dap.history.cs.args)
-      --     return vim.split(dap.history.cs.args, " ")
-      --   end,
-      -- },
     }
 
     dap.adapters["pwa-node"] = {
