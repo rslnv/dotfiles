@@ -90,8 +90,7 @@ return {
         require("neotest-dotnet")({
           dap = {
             args = { justMyCode = false },
-            adapter_name = "netcoredbg", --"netcoredbg"
-            -- adapter_name = "coreclr", --"netcoredbg"
+            adapter_name = "coreclr", --"netcoredbg"
           },
           dotnet_additional_args = {
             "--verbosity detailed",
