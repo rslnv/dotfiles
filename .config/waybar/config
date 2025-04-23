@@ -65,7 +65,7 @@
     "tooltip": false
   },
   "temperature#gpu": {
-    "hwmon-path": "/sys/devices/pci0000:00/0000:00:03.1/0000:0a:00.0/hwmon/hwmon4/temp1_input",
+    "hwmon-path": "/sys/devices/pci0000:00/0000:00:03.1/0000:09:00.0/hwmon/hwmon4/temp1_input",
     "format": "{temperatureC}°",
     "tooltip-format": "GPU {temperatureC}°"
   },
