@@ -97,7 +97,7 @@ return {
     vim.keymap.set("n", "<F2>", dap.step_into, { desc = "Step Into" })
     vim.keymap.set("n", "<F3>", dap.step_over, { desc = "Step Over" })
     vim.keymap.set("n", "<F4>", dap.step_out, { desc = "Step Out" })
-    vim.keymap.set("n", "<F5>", dap.step_back, { desc = "Step Out" })
+    vim.keymap.set("n", "<F5>", dap.step_back, { desc = "Step Back" })
     vim.keymap.set("n", "<F6>", dap.pause, { desc = "Pause" })
     vim.keymap.set("n", "<F7>", dap.restart, { desc = "Restart" })
     vim.keymap.set("n", "<F8>", dap.terminate, { desc = "Terminate" })
