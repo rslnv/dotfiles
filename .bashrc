@@ -11,6 +11,8 @@ export VISUAL="$EDITOR"
 export MANPAGER="nvim +Man!"
 export CHROME_BIN="chromium"
 
+export PATH="${PATH}:${HOME}/.dotnet/tools"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 export HISTCONTROL=ignoreboth
