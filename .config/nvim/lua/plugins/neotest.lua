@@ -85,7 +85,6 @@ return {
   },
   config = function()
     require("neotest").setup({
-      loglevel = 1,
       adapters = {
         require("neotest-dotnet")({
           dap = {
