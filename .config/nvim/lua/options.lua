@@ -73,6 +73,8 @@ vim.o.cursorline = true
 
 vim.o.winborder = "none"
 
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config({
