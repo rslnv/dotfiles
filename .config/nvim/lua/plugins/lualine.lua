@@ -1,14 +1,18 @@
 return {
-	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = {
-		options = {
-			theme = "gruvbox",
-			section_separators = "",
-			component_separators = "",
-		},
-	},
-	config = function()
-		require("lualine").setup()
-	end,
+  "nvim-lualine/lualine.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  opts = {
+    options = {
+      theme = "gruvbox",
+    },
+    sections = {
+      lualine_x = {
+        {
+          "rest",
+          icon = "",
+          fg = "#428890",
+        },
+      },
+    },
+  },
 }

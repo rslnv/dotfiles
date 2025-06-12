@@ -18,6 +18,7 @@ return {
       { "<leader>f", group = "Find" },
       { "<leader>h", group = "Hunk" },
       { "<leader>x", group = "Execute" },
+      { "<leader>r", group = "Rest" },
     })
   end,
 }
