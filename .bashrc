@@ -29,8 +29,8 @@ shopt -s checkwinsize # checks term size when bash regains control
 bind "set completion-ignore-case on"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=1000
-export HISTFILESIZE=20000
+export HISTSIZE=10000
+export HISTFILESIZE=50000
 
 # load aliases
 if [ -f ~/.bash_aliases ]; then
