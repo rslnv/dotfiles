@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking",
   group = vim.api.nvim_create_augroup("UserHighlightYank", { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -23,63 +23,54 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf, silent = true }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("error", opts, { desc = "Jump to declaration" }))
+    -- local opts = { buffer = ev.buf, silent = true }
+
+    local function opts(desc)
+      local o = { buffer = ev.buf, silent = true }
+      return vim.tbl_extend("error", o, { desc = desc })
+    end
+
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("Jump to declaration"))
     vim.keymap.set(
       "n",
       "gd",
       telescope_builtin.lsp_definitions,
       -- vim.lsp.buf.definition,
-      vim.tbl_extend("error", opts, { desc = "List definitions" })
+      opts("List definitions")
     )
     vim.keymap.set(
       "n",
-      "gt",
+      "grt",
       telescope_builtin.lsp_type_definitions,
       -- vim.lsp.buf.type_definition,
-      vim.tbl_extend("error", opts, { desc = "List type definition" })
+      opts("List type definition")
     )
     vim.keymap.set(
       "n",
-      "gi",
+      "gri",
       telescope_builtin.lsp_implementations,
       -- vim.lsp.buf.implementation,
-      vim.tbl_extend("error", opts, { desc = "List implementations" })
+      opts("List implementations")
     )
     vim.keymap.set(
       "n",
-      "gr",
+      "grr",
       telescope_builtin.lsp_references,
       -- vim.lsp.buf.references,
-      vim.tbl_extend("error", opts, { desc = "List references" })
+      opts("List references")
     )
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("error", opts, { desc = "Symbol info" }))
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, vim.tbl_extend("error", opts, { desc = "Signature help" }))
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Symbol info"))
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts("Signature help"))
 
-    vim.keymap.set(
-      "n",
-      "<leader>wa",
-      vim.lsp.buf.add_workspace_folder,
-      vim.tbl_extend("error", opts, { desc = "Add workspace folder" })
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>wr",
-      vim.lsp.buf.remove_workspace_folder,
-      vim.tbl_extend("error", opts, { desc = "Remove workspace folder" })
-    )
+    vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
+    vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
     vim.keymap.set("n", "<leader>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, vim.tbl_extend("error", opts, { desc = "List workspace folders" }))
+    end, opts("List workspace folders"))
 
-    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("error", opts, { desc = "Rename symbol" }))
-    vim.keymap.set(
-      { "n", "v" },
-      "<leader>ca",
-      vim.lsp.buf.code_action,
-      vim.tbl_extend("error", opts, { desc = "Actions" })
-    )
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts("Rename symbol"))
+    vim.keymap.set({ "n", "x" }, "gra", vim.lsp.buf.code_action, opts("Actions"))
 
     -- more tsserver specific code actions
     -- https://www.lazyvim.org/extras/lang/typescript
@@ -89,19 +80,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client and client.config.name == "ts_ls" then
       vim.keymap.set("n", "<leader>co", function()
         vim.lsp.buf.code_action({ apply = true, context = { only = { "source.organizeImports" } } })
-      end, vim.tbl_extend("error", opts, { desc = "Organize imports" }))
+      end, opts("Organize imports"))
 
       vim.keymap.set("n", "<leader>cm", function()
         vim.lsp.buf.code_action({ apply = true, context = { only = { "source.addMissingImports.ts" } } })
-      end, vim.tbl_extend("error", opts, { desc = "Add missing imports" }))
+      end, opts("Add missing imports"))
 
       vim.keymap.set("n", "<leader>cu", function()
         vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnused.ts" } } })
-      end, vim.tbl_extend("error", opts, { desc = "Remove unused imports" }))
+      end, opts("Remove unused imports"))
     end
   end,
 })
-
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 -- 	desc = "Do linting",
 -- 	group = vim.api.nvim_create_augroup("UserLinting", { clear = true }),

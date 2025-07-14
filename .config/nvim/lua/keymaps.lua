@@ -6,7 +6,7 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help" })
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Keymaps" })
 vim.keymap.set("n", "<leader>fc", builtin.command_history, { desc = "Command history" })
 vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "Registers" })
-vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Document symbols" })
+vim.keymap.set("n", "gO", builtin.lsp_document_symbols, { desc = "Document symbols" })
 
 vim.keymap.set("n", "<leader>ec", function()
   builtin.find_files({ cwd = vim.fn.stdpath("config") })
