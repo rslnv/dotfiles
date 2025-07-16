@@ -229,6 +229,10 @@ for_window {
   [app_id="."] inhibit_idle fullscreen
 }
 
+assign {
+  [app_id="thunderbird"] 10
+}
+
 # setting theme
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
@@ -242,6 +246,8 @@ exec mako
 
 # polkit 'polkit-gnome'
 exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
+exec sleep 2 && thunderbird
 
 # tray icon might be missing without a delay
 exec sleep 3 && keepassxc
