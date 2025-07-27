@@ -102,4 +102,5 @@ vim.diagnostic.config({
       return diagnostic_message[diagnostic.severity]
     end,
   },
+  virtual_lines = true, -- { current_line = true },
 })
