@@ -239,6 +239,8 @@ exec_always {
   gsettings set $gnome-schema gtk-theme 'Adwaita'
   gsettings set $gnome-schema icon-theme 'Adwaita'
   gsettings set $gnome-schema cursor-theme 'Adwaita'
+  gsettings set $gnome-schema clock-format '24h'
+  gsettings set $gnome-schema color-scheme 'prefer-dark'
 }
 
 # notifications
@@ -247,7 +249,7 @@ exec mako
 # polkit 'polkit-gnome'
 exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
-exec sleep 2 && thunderbird
+exec sleep 5 && thunderbird
 
 # tray icon might be missing without a delay
 exec sleep 3 && keepassxc
