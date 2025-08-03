@@ -17,8 +17,10 @@ return {
       { "<leader>e", group = "Edit" },
       { "<leader>f", group = "Find" },
       { "<leader>h", group = "Hunk" },
-      { "<leader>x", group = "Execute" },
+      { "<leader>q", group = "Diagnostics" },
       { "<leader>r", group = "Rest" },
+      { "<leader>x", group = "Execute" },
+      { "<leader>w", group = "Workspace" },
     })
   end,
 }
