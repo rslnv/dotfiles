@@ -25,4 +25,5 @@ return {
     "j-hui/fidget.nvim",
     opts = {},
   },
+  { "Hoffs/omnisharp-extended-lsp.nvim" },
 }

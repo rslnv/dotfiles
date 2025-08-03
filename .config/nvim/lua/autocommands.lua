@@ -34,29 +34,53 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set(
       "n",
       "gd",
-      telescope_builtin.lsp_definitions,
       -- vim.lsp.buf.definition,
+      function()
+        if client and client.config.name == "omnisharp" then
+          require("omnisharp_extended").telescope_lsp_definition()
+        else
+          telescope_builtin.lsp_definitions()
+        end
+      end,
       opts("List definitions")
     )
     vim.keymap.set(
       "n",
       "grt",
-      telescope_builtin.lsp_type_definitions,
       -- vim.lsp.buf.type_definition,
+      function()
+        if client and client.config.name == "omnisharp" then
+          require("omnisharp_extended").telescope_lsp_type_definition()
+        else
+          telescope_builtin.lsp_type_definitions()
+        end
+      end,
       opts("List type definition")
     )
     vim.keymap.set(
       "n",
       "gri",
-      telescope_builtin.lsp_implementations,
       -- vim.lsp.buf.implementation,
+      function()
+        if client and client.config.name == "omnisharp" then
+          require("omnisharp_extended").telescope_lsp_implementation()
+        else
+          telescope_builtin.lsp_implementations()
+        end
+      end,
       opts("List implementations")
     )
     vim.keymap.set(
       "n",
       "grr",
-      telescope_builtin.lsp_references,
       -- vim.lsp.buf.references,
+      function()
+        if client and client.config.name == "omnisharp" then
+          require("omnisharp_extended").telescope_lsp_references()
+        else
+          telescope_builtin.lsp_references()
+        end
+      end,
       opts("List references")
     )
 
@@ -71,6 +95,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts("Rename symbol"))
     vim.keymap.set({ "n", "x" }, "gra", vim.lsp.buf.code_action, opts("Actions"))
+
+    -- if client and client.config.name == "omnisharp" then
+    --   vim.print(client.server_capabilities)
+    -- end
 
     -- more tsserver specific code actions
     -- https://www.lazyvim.org/extras/lang/typescript
