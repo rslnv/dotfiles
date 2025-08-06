@@ -10,7 +10,6 @@ return {
   },
 
   keys = {
-    { "<leader>t", "", desc = "+test" },
     {
       "<leader>tt",
       function()

@@ -19,6 +19,7 @@ return {
       { "<leader>h", group = "Hunk" },
       { "<leader>q", group = "Diagnostics" },
       { "<leader>r", group = "Rest" },
+      { "<leader>t", group = "Test" },
       { "<leader>x", group = "Execute" },
       { "<leader>w", group = "Workspace" },
     })
