@@ -8,13 +8,13 @@ return {
     "echasnovski/mini.pairs",
     event = "VeryLazy",
     opts = {},
-    config = function()
-      vim.g.undotree_WindowLayout = 2
-    end,
   },
   {
     "mbbill/undotree",
     event = "VeryLazy",
+    config = function()
+      vim.g.undotree_WindowLayout = 2
+    end,
   },
   {
     "brenoprata10/nvim-highlight-colors",
