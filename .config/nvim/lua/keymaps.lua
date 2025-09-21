@@ -28,9 +28,17 @@ vim.keymap.set("n", "<leader>xs", "<CMD>source %<CR>", { desc = "Source file" })
 vim.keymap.set("n", "<leader>xx", ":.lua<CR>", { desc = "Execute line" })
 vim.keymap.set("v", "<leader>xx", ":lua<CR>", { desc = "Execute selection" })
 
--- move selected text up and down
+-- Move selected text up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Vertical navigation
+vim.keymap.set({ "n", "x" }, "j", function()
+  return vim.v.count > 0 and "j" or "gj"
+end, { expr = true })
+vim.keymap.set({ "n", "x" }, "k", function()
+  return vim.v.count > 0 and "k" or "gk"
+end, { expr = true })
 
 -- Clear search highlight
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
