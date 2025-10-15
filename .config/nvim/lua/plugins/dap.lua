@@ -11,7 +11,26 @@ return {
     local dapui = require("dapui")
     local widgets = require("dap.ui.widgets")
 
-    dapui.setup()
+    dapui.setup({
+      expand_lines = true,
+      -- controls = { enabled = false }, -- no extra play/step buttons
+      floating = { border = "rounded" },
+      -- Set dapui window
+      render = {
+        max_type_length = 60,
+        max_value_lines = 200,
+      },
+      -- Only one layout: just the "scopes" (variables) list at the bottom
+      layouts = {
+        {
+          elements = {
+            { id = "scopes", size = 1.0 }, -- 100% of this panel is scopes
+          },
+          size = 15, -- height in lines (adjust to taste)
+          position = "bottom", -- "left", "right", "top", "bottom"
+        },
+      },
+    })
 
     dap.adapters.coreclr = {
       type = "executable",
@@ -79,9 +98,7 @@ return {
       },
     }
 
-    vim.keymap.set("n", "<leader>dd", function()
-      dapui.eval(nil, { enter = true })
-    end, { desc = "Evaluate" })
+    vim.keymap.set("n", "<leader>de", dapui.eval, { desc = "Evaluate" })
     vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
     vim.keymap.set("n", "<leader>dB", dap.set_breakpoint, { desc = "Set Breakpoint" })
     vim.keymap.set("n", "<leader>dL", function()
@@ -93,18 +110,71 @@ return {
     vim.keymap.set({ "n", "v" }, "<Leader>dh", widgets.hover, { desc = "Hover" })
     vim.keymap.set({ "n", "v" }, "<Leader>dp", widgets.preview, { desc = "Preview" })
 
-    vim.keymap.set("n", "<F1>", dap.continue, { desc = "Continue" })
-    vim.keymap.set("n", "<F2>", dap.step_into, { desc = "Step Into" })
-    vim.keymap.set("n", "<F3>", dap.step_over, { desc = "Step Over" })
-    vim.keymap.set("n", "<F4>", dap.step_out, { desc = "Step Out" })
-    vim.keymap.set("n", "<F5>", dap.step_back, { desc = "Step Back" })
-    vim.keymap.set("n", "<F6>", dap.pause, { desc = "Pause" })
-    vim.keymap.set("n", "<F7>", dap.restart, { desc = "Restart" })
-    vim.keymap.set("n", "<F8>", dap.terminate, { desc = "Terminate" })
-    vim.keymap.set("n", "<F9>", dap.close, { desc = "Close without terminating" })
+    vim.keymap.set("n", "<Leader>dr", function()
+      require("dap").repl.toggle()
+    end, { desc = "REPL" })
+
+    vim.keymap.set("n", "<leader>ddr", dap.continue, { desc = "Run" })
+    vim.keymap.set("n", "<leader>ddi", dap.step_into, { desc = "Step Into" })
+    vim.keymap.set("n", "<leader>ddo", dap.step_over, { desc = "Step Over" })
+    vim.keymap.set("n", "<leader>ddO", dap.step_out, { desc = "Step Out" })
+    vim.keymap.set("n", "<leader>ddb", dap.step_back, { desc = "Step Back" })
+    vim.keymap.set("n", "<leader>ddp", dap.pause, { desc = "Pause" })
+    vim.keymap.set("n", "<leader>ddR", dap.restart, { desc = "Restart" })
+    vim.keymap.set("n", "<leader>ddt", dap.terminate, { desc = "Terminate" })
+    vim.keymap.set("n", "<leader>ddc", dap.close, { desc = "Close without terminating" })
 
     dap.listeners.after.event_initialized["dapui_config"] = dapui.open
     dap.listeners.before.event_terminated["dapui_config"] = dapui.close
     dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+    -- https://emojipedia.org/en/stickers/search?q=circle
+    -- vim.fn.sign_define("DapBreakpoint", {
+    --   text = "",
+    --   texthl = "DapBreakpointSymbol",
+    --   linehl = "DapBreakpoint",
+    --   numhl = "DapBreakpoint",
+    -- })
+    --
+    -- vim.fn.sign_define("DapStopped", {
+    --   text = "",
+    --   texthl = "yellow",
+    --   linehl = "DapBreakpoint",
+    --   numhl = "DapBreakpoint",
+    -- })
+    -- vim.fn.sign_define("DapBreakpointRejected", {
+    --   text = "",
+    --   texthl = "DapStoppedSymbol",
+    --   linehl = "DapBreakpoint",
+    --   numhl = "DapBreakpoint",
+    -- })
+    local signs = {
+      DapBreakpoint = { text = "", texthl = "SignColumn", linehl = "", numhl = "" },
+      DapBreakpointCondition = { text = "", texthl = "SignColumn", linehl = "", numhl = "" },
+      DapBreakpointRejected = { text = "", texthl = "SignColumn", linehl = "", numhl = "" },
+      DapLogPoint = { text = "", texthl = "SignColumn", linehl = "", numhl = "" },
+      DapStopped = { text = "", texthl = "SignColumn", linehl = "debugPC", numhl = "" },
+    }
+
+    -- local function sign_try_define(name)
+    --   local s = vim.fn.sign_getdefined(name)
+    --   if vim.tbl_isempty(s) then
+    --     local opts = signs[name]
+    --     vim.fn.sign_define(name, opts)
+    --   end
+    -- end
+
+    for name in pairs(signs) do
+      local opts = signs[name]
+      vim.fn.sign_define(name, opts)
+    end
+
+    -- DapBreakpoint = { text = "B", texthl = "SignColumn", linehl = "", numhl = "" },
+    -- DapBreakpointCondition = { text = "C", texthl = "SignColumn", linehl = "", numhl = "" },
+    -- DapBreakpointRejected = { text = 'R', texthl = "SignColumn", linehl = '', numhl = '' },
+    -- DapLogPoint = { text = 'L', texthl = "SignColumn", linehl = '', numhl = '' },
+    -- DapStopped = { text = '→', texthl = "SignColumn", linehl = 'debugPC', numhl = '' },
+    --
+    --   vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
   end,
 }
