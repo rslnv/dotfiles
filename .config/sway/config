@@ -53,10 +53,10 @@ bindsym $mod+Delete exec swaymsg output $secondary toggle
 # bindsym $mod+BackSpace exec ~/.config/scripts/toggle-screen.sh $primary
 # bindsym $mod+Delete exec ~/.config/scripts/toggle-screen.sh $secondary
 
-set $term alacritty
+set $term foot
 
-bindsym $hyper+a exec $term
-bindsym $hyper+f exec firefox
+bindsym $hyper+return exec $term
+bindsym $hyper+space exec firefox
 bindsym $hyper+y exec $term -e yazi
 bindsym $hyper+n exec nautilus
 bindsym $hyper+c exec chromium
