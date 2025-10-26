@@ -27,7 +27,7 @@
   ],
 
   "custom/launcher": {
-    "on-click": "wofi --show drun -I",
+    "on-click": "rofi -show drun -show-icons",
     "format": "",
     "tooltip": false
   },
@@ -55,7 +55,7 @@
     "tooltip": false
   },
   "temperature#cpu": {
-    "hwmon-path": "/sys/devices/platform/PNP0C14:02/wmi_bus/wmi_bus-PNP0C14:02/466747A0-70EC-11DE-8A39-0800200C9A66/hwmon/hwmon2/temp1_input",
+    "hwmon-path": "/sys/devices/platform/PNP0C14:02/wmi_bus/wmi_bus-PNP0C14:02/466747A0-70EC-11DE-8A39-0800200C9A66-4/hwmon/hwmon3/temp1_input",
     "format": "{temperatureC}°",
     "tooltip-format": "CPU {temperatureC}°"
   },
