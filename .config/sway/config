@@ -53,7 +53,7 @@ bindsym $mod+Delete exec swaymsg output $secondary toggle
 # bindsym $mod+BackSpace exec ~/.config/scripts/toggle-screen.sh $primary
 # bindsym $mod+Delete exec ~/.config/scripts/toggle-screen.sh $secondary
 
-set $term foot
+set $term alacritty
 
 bindsym $hyper+return exec $term
 bindsym $hyper+space exec firefox
@@ -65,12 +65,12 @@ bindsym $hyper+t exec thunderbird
 # Kill focused window
 bindsym $mod+q kill
 # Start your launcher
-bindsym $mod+space exec wofi --show drun -I
-bindsym $mod+Return exec wofi --show run
+bindsym $mod+space exec rofi -show drun -show-icons
+bindsym $mod+Return exec rofi -show run
 
 # Clipboard history
-bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
-bindsym $mod+Shift+c exec cliphist list | wofi --dmenu | cliphist delete
+bindsym $mod+Shift+v exec cliphist list | rofi -dmenu -p "Clipboard select" | cliphist decode | wl-copy
+bindsym $mod+Shift+c exec cliphist list | rofi -dmenu -p "Clipboard delete" | cliphist delete
 bindsym $mod+Shift+d exec cliphist wipe
 
 # color picker

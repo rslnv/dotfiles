@@ -1,0 +1,43 @@
+configuration {
+  font: "FiraCode Nerd Font 12";
+  terminal: "alacritty";
+  drun-show-actions: true;
+
+  timeout {
+      action: "kb-cancel";
+      delay:  10;
+  }
+}
+
+@theme "gruvbox-dark"
+
+listview {
+  spacing: 0;
+  border: 1px dash 0 0;
+}
+
+window {
+  width: 800px;
+  border: 1px;
+  border-color: @background;
+}
+
+mainbox {
+  border: 1px;
+  padding: 4px;
+  border-color: @separatorcolor;
+}
+
+element {
+  orientation: horizontal;
+  padding: 0.2em 0 0.2em 0.2em;
+  spacing: 0.5em;
+}
+
+element-icon {
+    size: 2em;
+}
+
+element-text {
+  vertical-align: 0.5;
+}

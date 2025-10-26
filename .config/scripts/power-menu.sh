@@ -1,13 +1,23 @@
 #!/bin/bash
 
-poweroff_command="systemctl poweroff"
-reboot_command="systemctl reboot"
-logout_command="swaymsg exit"
-sleep_command="systemctl suspend"
+labels=(
+  "󰐥 Power off"
+  "󰜉 Reboot"
+  "󰍃 Logout"
+  "󰒲 Sleep"
+  "󰌾 Lock"
+)
 
-rofi_command='wofi --dmenu --prompt Exit --width 10 --lines 6 --hide-scroll --insensitive'
+commands=(
+  "systemctl poweroff"
+  "systemctl reboot"
+  "swaymsg exit"
+  "systemctl suspend"
+  "swaylock -f"
+)
 
-options=$'Power Off\nReboot\nLogout\nSleep'
+lines=${#commands[@]}
 
-# lowercasing and trimming selected option
-eval \$"$(echo -e "$options" | $rofi_command | tr [:upper:] [:lower:] | tr -d " ")_command"
+selected=$(printf '%s\n' "${labels[@]}" | rofi -dmenu -i -matching fuzzy -p Exit -format i -theme-str "#window { width: 180px; } #listview { scrollbar: false; lines: $lines; }")
+
+[[ -n "$selected" ]] && ${commands[$selected]}
