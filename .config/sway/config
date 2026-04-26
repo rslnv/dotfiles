@@ -60,7 +60,6 @@ bindsym $hyper+space exec firefox
 bindsym $hyper+y exec $term -e yazi
 bindsym $hyper+n exec nautilus
 bindsym $hyper+c exec chromium
-bindsym $hyper+t exec thunderbird
 
 # Kill focused window
 bindsym $mod+q kill
@@ -230,7 +229,7 @@ for_window {
 }
 
 assign {
-  [app_id="thunderbird"] 10
+  [app_id="org.mozilla.Thunderbird"] 10
 }
 
 # setting theme
