@@ -16,6 +16,7 @@ return {
       "http",
       "javascript",
       "lua",
+      -- "razor",
       "scss",
       "typescript",
       "vimdoc",
