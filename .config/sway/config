@@ -261,4 +261,6 @@ exec cliphist wipe
 exec nm-applet --indicator
 exec blueman-applet
 
+exec firefox
+
 include /etc/sway/config.d/*
