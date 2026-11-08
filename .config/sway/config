@@ -216,7 +216,7 @@ bar {
 for_window {
   [app_id="(?i)popup"] floating enable
   [app_id="nm-connection-editor"] floating enable, resize set 600 400
-  [app_id="pavucontrol"] floating enable, resize set 800 600
+  [app_id="org.pulseaudio.pavucontrol"] floating enable, resize set 1100 600
   [app_id="blueberry"] floating enable, resize set 600 800
   [app_id="blueman-manager"] floating enable, resize set 600 800
 
