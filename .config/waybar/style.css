@@ -38,7 +38,8 @@ window#waybar {
 #custom-launcher {
   color: #458588;
   font-size: 24px;
-  padding-right: 7px;
+  padding-left: 8px;
+  padding-top: 5px;
 }
 
 #workspaces {
@@ -69,7 +70,7 @@ window#waybar {
   padding-top: 10px;
   color: #fb4934;
   animation-name: blink;
-  animation-duration: 1.0s;
+  animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -99,11 +100,11 @@ window#waybar {
   padding-bottom: 5px;
 }
 #custom-cpu-label {
-  padding-right: 7px;
+  padding-left: 10px;
 }
 #custom-gpu-label {
-  padding-right: 5px;
-  padding-top: 3px
+  padding-left: 11px;
+  padding-top: 3px;
 }
 
 #bluetooth,
@@ -139,6 +140,7 @@ window#waybar {
 }
 
 #custom-shutdown {
+  padding-left: 14px;
   padding-top: 5px;
   padding-bottom: 5px;
   color: #fb4934;
