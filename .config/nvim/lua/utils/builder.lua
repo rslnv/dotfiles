@@ -39,7 +39,12 @@ function M.dotnet_build_and_pick_dll()
         vim.print("No dlls to choose from")
         coroutine.resume(dap_run_co, dap.ABORT)
       else
-        vim.ui.select(items, { prompt = "Select dll" }, function(choice)
+        vim.ui.select(items, {
+          prompt = "Select dll",
+          format_item = function(item)
+            return vim.fn.fnamemodify(item, ":t")
+          end,
+        }, function(choice)
           choice = choice or dap.ABORT
           coroutine.resume(dap_run_co, choice)
         end)
